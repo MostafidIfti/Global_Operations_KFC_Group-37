@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="581.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kfcglobaloperationsapp.IFTI_2310321.DemandForecastingController">
+   <children>
+      <Label layoutX="300.0" layoutY="30.0" text="Raw Material Demand Forecasting" />
+
+      <TableView fx:id="forecastTableView" layoutX="50.0" layoutY="80.0" prefHeight="380.0" prefWidth="670.0">
+        <columns>
+          <TableColumn fx:id="itemCol" prefWidth="250.0" text="Raw Material Item" />
+          <TableColumn fx:id="pastSalesCol" prefWidth="150.0" text="Past Month Usage" />
+          <TableColumn fx:id="trendCol" prefWidth="120.0" text="Historical Trend" />
+          <TableColumn fx:id="projectedCol" prefWidth="150.0" text="Projected Demand" />
+        </columns>
+      </TableView>
+
+      <Button layoutX="50.0" layoutY="490.0" mnemonicParsing="false" onAction="#handleGenerateForecast" text="Run Forecast Algorithm" />
+   </children>
+</AnchorPane>
