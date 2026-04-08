@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="492.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hanif_2310091_oop_project_final.StoreManagerController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="280.0" layoutY="13.0" prefHeight="34.0" prefWidth="240.0" text="Store Manager Dashboard">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="654.0" layoutY="18.0" mnemonicParsing="false" onAction="#LogoutOA" prefHeight="34.0" prefWidth="73.0" text="Logout" />
+      <TabPane layoutX="25.0" layoutY="74.0" prefHeight="398.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Daily Operations">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox layoutX="86.0" layoutY="45.0" prefHeight="243.0" prefWidth="262.0" spacing="15.0">
+                           <children>
+                              <Label text="Record Daily Sales">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <DatePicker fx:id="salesDatePicker" promptText="Select closing date" />
+                              <TextField fx:id="posSalesInput" promptText="Enter total POS sales" />
+                              <TextField fx:id="physicalCashInput" promptText="Enter physical cash amount" />
+                              <Button mnemonicParsing="false" onAction="#handleSaveSales" text="Save Daily Sales" />
+                              <Label fx:id="salesMessageLabel" prefHeight="30.0" prefWidth="263.0" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </VBox>
+                        <Separator layoutX="398.0" layoutY="33.0" orientation="VERTICAL" prefHeight="310.0" prefWidth="6.0" />
+                        <Label layoutX="506.0" layoutY="36.0" text="Inventory Management">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TableView fx:id="inventoryTable" layoutX="451.0" layoutY="63.0" prefHeight="200.0" prefWidth="242.0">
+                          <columns>
+                            <TableColumn fx:id="colItemId" prefWidth="75.0" text="Item ID" />
+                            <TableColumn fx:id="colItemName" prefWidth="75.0" text="Item Name" />
+                              <TableColumn fx:id="colCurrentStock" prefWidth="91.19998779296876" text="Current Stock" />
+                          </columns>
+                        </TableView>
+                        <TextField fx:id="updateStockInput" layoutX="498.0" layoutY="280.0" promptText="Enter new quantity" />
+                        <Button layoutX="530.0" layoutY="321.0" mnemonicParsing="false" onAction="#updateStockButtonOA" text="Update Stock" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Staff Management">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox layoutX="61.0" layoutY="31.0" prefHeight="286.0" prefWidth="230.0" spacing="15.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="18.0" prefWidth="236.0" text="Log Employee Attendance">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="employeeDropdown" prefHeight="26.0" prefWidth="230.0" promptText="Select Employee" />
+                              <DatePicker fx:id="attendanceDatePicker" prefHeight="26.0" prefWidth="233.0" promptText="Select Date" />
+                              <TextField fx:id="hoursWorkedInput" promptText="Enter hours worked" />
+                              <Button mnemonicParsing="false" onAction="#handleSaveAttendanceOA" prefHeight="26.0" prefWidth="236.0" text="Save Attendance" />
+                              <Label fx:id="attendanceMessageLabel" prefHeight="34.0" prefWidth="236.0" />
+                           </children>
+                        </VBox>
+                        <Separator layoutX="353.0" layoutY="13.0" orientation="VERTICAL" prefHeight="357.0" prefWidth="14.0" />
+                        <VBox layoutX="378.0" layoutY="31.0" prefHeight="307.0" prefWidth="337.0" spacing="15.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="18.0" prefWidth="342.0" text="Store Staff Roster">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="staffTable" prefHeight="200.0" prefWidth="274.0">
+                                <columns>
+                                  <TableColumn prefWidth="75.0" text="Emp ID" />
+                                  <TableColumn prefWidth="85.60006713867188" text="Name" />
+                                    <TableColumn prefWidth="81.5999755859375" text="Role" />
+                                    <TableColumn prefWidth="93.5999755859375" text="Status" />
+                                </columns>
+                              </TableView>
+                              <Button mnemonicParsing="false" onAction="#handleViewPerformanceOA" prefHeight="26.0" prefWidth="343.0" text="          View Employee Performance" />
+                           </children>
+                        </VBox>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Store Issues">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox layoutX="14.0" layoutY="6.0" prefHeight="362.0" prefWidth="354.0" spacing="15.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="18.0" prefWidth="354.0" text="Log New Issue or Feedback">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="issueTypeDropdown" prefHeight="26.0" prefWidth="201.0" promptText="Select Issue Type" />
+                              <TextArea fx:id="issueDescriptionInput" prefHeight="200.0" prefWidth="200.0" promptText="Describe the issue or feedback here..." />
+                              <DatePicker fx:id="issueDatePicker" prefHeight="26.0" prefWidth="198.0" promptText="Date of Occurrence" />
+                              <Button mnemonicParsing="false" onAction="#handleSubmitIssueOA" prefHeight="26.0" prefWidth="99.0" text="Submit Issue" />
+                              <Label fx:id="issueMessageLabel" prefHeight="30.0" prefWidth="314.0" />
+                           </children>
+                        </VBox>
+                        <Separator layoutX="384.0" layoutY="14.0" orientation="VERTICAL" prefHeight="342.0" prefWidth="7.0" />
+                        <Label layoutX="492.0" layoutY="22.0" text="Issue &amp; Feedback Tracker">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <TableView fx:id="issuesTable" layoutX="410.0" layoutY="65.0" prefHeight="200.0" prefWidth="325.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="Issue ID" />
+                            <TableColumn prefWidth="75.0" text="Type" />
+                              <TableColumn prefWidth="88.00006103515625" text="Description" />
+                              <TableColumn prefWidth="85.60000000000002" text="Status" />
+                          </columns>
+                        </TableView>
+                        <Button layoutX="547.0" layoutY="295.0" mnemonicParsing="false" onAction="#handleResolveIssueOA" text="Mark as Resolved" />
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Summary &amp; Requests">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="408.0" prefWidth="750.0">
+                     <children>
+                        <VBox layoutX="14.0" layoutY="11.0" prefHeight="353.0" prefWidth="282.0" spacing="15.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="287.0" text="Submit Regional Request">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="requestTypeDropdown" prefWidth="150.0" promptText="Select Request Type" />
+                              <TextArea fx:id="requestDetailsInput" prefHeight="200.0" prefWidth="200.0" promptText="Enter request details and justification here..." />
+                              <Button mnemonicParsing="false" onAction="#handleSendRequestOA" prefHeight="26.0" prefWidth="102.0" text="Send Request" />
+                              <Label prefHeight="29.0" prefWidth="288.0" />
+                           </children>
+                        </VBox>
+                        <Separator layoutX="336.0" layoutY="14.0" orientation="VERTICAL" prefHeight="350.0" prefWidth="4.0" />
+                        <Label layoutX="464.0" layoutY="12.0" text="Store Performance Summary">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="performanceSummaryBox" editable="false" layoutX="355.0" layoutY="37.0" prefHeight="79.0" prefWidth="381.0" />
+                        <Label layoutX="545.0" layoutY="299.0" text="Label" />
+                        <TableView fx:id="requestsTable" layoutX="356.0" layoutY="162.0" prefHeight="200.0" prefWidth="378.0">
+                          <columns>
+                            <TableColumn prefWidth="97.5999755859375" text="Req ID" />
+                            <TableColumn prefWidth="109.60000610351562" text="Type" />
+                              <TableColumn prefWidth="171.199951171875" text="Status" />
+                          </columns>
+                        </TableView>
+                        <Label layoutX="478.0" layoutY="137.0" text="Pending Requests Status">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
