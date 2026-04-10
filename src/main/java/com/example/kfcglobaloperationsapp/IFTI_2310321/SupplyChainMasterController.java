@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class SupplyChainMasterController {
 
-    // This is a helper method to load any FXML file easily
+
     private void loadScreen(ActionEvent event, String fxmlFileName) {
         try {
             FXMLLoader loader = new FXMLLoader(com.example.kfcglobaloperationsapp.HelloApplication.class.getResource("Ifti_2310321_FXML_FIles/Supply_Chain-Fxml_works/" + fxmlFileName));
