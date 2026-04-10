@@ -2,11 +2,11 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tab?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="695.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kfcglobaloperationsapp.Uzair_2521139.CashierDashboardController">
    <center>
       <TabPane fx:id="cashierTab" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
@@ -14,7 +14,6 @@
           <Tab fx:id="createNewSessionTab" closable="false" text="Manage Session">
                <content>
                    <fx:include source="manageSession.fxml" />
-<!--                  <AnchorPane prefHeight="200.0" prefWidth="200.0" />-->
                </content>
           </Tab>
             <Tab text="Create New Order">
@@ -43,12 +42,11 @@
    <top>
       <AnchorPane prefHeight="66.0" prefWidth="947.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="35.0" layoutY="24.0" text="Welcome, Cashier Name" />
-            <Label layoutX="262.0" layoutY="24.0" text="Cashier ID" />
-            <Label layoutX="391.0" layoutY="24.0" text="POS ID" />
+            <Label fx:id="welcomeTextLabel" layoutX="35.0" layoutY="24.0" text="Welcome, Cashier Name" />
+            <Label fx:id="cashierIdLabel" layoutX="262.0" layoutY="24.0" text="Cashier ID" />
             <Label layoutX="852.0" layoutY="31.0" />
-            <Button layoutX="852.0" layoutY="18.0" mnemonicParsing="false" text="Log Out" />
-            <Label layoutX="540.0" layoutY="24.0" text="Session: No Session Active" />
+            <Button fx:id="logOutButton" layoutX="852.0" layoutY="18.0" mnemonicParsing="false" onAction="#onActionLogOut" text="Log Out" />
+            <Label fx:id="sessionActiveStatusLabel" layoutX="540.0" layoutY="24.0" text="Session: No Session Active" />
          </children>
       </AnchorPane>
    </top>
