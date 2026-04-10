@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-
+import javafx.scene.layout.AnchorPane;
 
 
 public class CashierDashboardController {
@@ -21,12 +21,11 @@ public class CashierDashboardController {
     private Button logOutButton;
     @FXML
     private Label sessionActiveStatusLabel;
+    @FXML
+    private AnchorPane cashierAnchorPane;
 
     @FXML
     public void initialize() {
-        Database.currentCashier = new Cashier(
-                (int)(Math.random() * (100000)), "Uzair"
-        );
 
         welcomeTextLabel.setText("Welcome, " + Database.currentCashier.name);
         cashierIdLabel.setText("CashierID: " + String.valueOf(Database.currentCashier.userID));
@@ -64,7 +63,7 @@ public class CashierDashboardController {
         return sessionActiveStatusLabel;
     }
 
-    public void setSessionActiveStatusLabel(Label sessionActiveStatusLabel) {
-        this.sessionActiveStatusLabel = sessionActiveStatusLabel;
+    public void setSessionActiveStatusLabel(String sessionActiveStatusText) {
+        this.sessionActiveStatusLabel.setText(sessionActiveStatusText);
     }
 }

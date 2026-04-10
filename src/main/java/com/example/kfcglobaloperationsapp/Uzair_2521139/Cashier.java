@@ -14,9 +14,9 @@ public class Cashier extends User {
 
     }
 
-    public Order createCustomerOrder(){
-        return new Order();
-    }
+//    public Order createCustomerOrder(){
+//
+//    }
 
     public RefillRequest requestCashRefill(){
         return new RefillRequest();

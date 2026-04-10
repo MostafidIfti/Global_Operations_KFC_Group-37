@@ -6,6 +6,11 @@ public class CashierSession {
     private double openingCash, closingCash;
     private String status;
 
+
+    public CashierSession(Cashier cashier) {
+        this.cashier = cashier;
+    }
+
     public CashierSession(int sessionID, Cashier cashier, double openingCash, double closingCash, String status) {
         this.sessionID = sessionID;
         this.cashier = cashier;

@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kfcglobaloperationsapp.Uzair_2521139.ManageSessionController">
+<AnchorPane id="createNewSessionTab" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kfcglobaloperationsapp.Uzair_2521139.StartSessionController">
    <children>
       <Label layoutX="60.0" layoutY="39.0" text="Start Session" />
       <Label layoutX="60.0" layoutY="93.0" text="Please Enter Opening Cash Amount Before Starting a New Session" />

@@ -2,17 +2,17 @@ package com.example.kfcglobaloperationsapp.Uzair_2521139;
 
 public class OrderItem {
 
-    private int orderItemID, orderID, menuItemID, quantity;
+    private int orderItemID, quantity;
+    private Order order;
+    private MenuItem menuItem;
     private double unitPrice, itemSubtotal;
 
-
-    public OrderItem(int orderItemID, int orderID, int menuItemID, int quantity, double unitPrice, double itemSubtotal) {
+    public OrderItem(int orderItemID, int quantity, Order order, MenuItem menuItem) {
         this.orderItemID = orderItemID;
-        this.orderID = orderID;
-        this.menuItemID = menuItemID;
         this.quantity = quantity;
-        this.unitPrice = unitPrice;
-        this.itemSubtotal = itemSubtotal;
+        this.order = order;
+        this.menuItem = menuItem;
+        this.itemSubtotal = quantity * menuItem.getPrice();
     }
 
     public int getOrderItemID() {
@@ -23,28 +23,28 @@ public class OrderItem {
         this.orderItemID = orderItemID;
     }
 
-    public int getOrderID() {
-        return orderID;
-    }
-
-    public void setOrderID(int orderID) {
-        this.orderID = orderID;
-    }
-
-    public int getMenuItemID() {
-        return menuItemID;
-    }
-
-    public void setMenuItemID(int menuItemID) {
-        this.menuItemID = menuItemID;
-    }
-
     public int getQuantity() {
         return quantity;
     }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public MenuItem getMenuItem() {
+        return menuItem;
+    }
+
+    public void setMenuItem(MenuItem menuItem) {
+        this.menuItem = menuItem;
     }
 
     public double getUnitPrice() {
@@ -63,5 +63,7 @@ public class OrderItem {
         this.itemSubtotal = itemSubtotal;
     }
 
-    public void calculateSubtotal(){}
+    public void calculateSubtotal(){
+        this.itemSubtotal = this.quantity * this.menuItem.getPrice();
+    }
 }

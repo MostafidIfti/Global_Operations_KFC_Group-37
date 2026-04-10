@@ -1,6 +1,7 @@
 module com.example.kfcglobaloperationsapp {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.xml.crypto;
 
     opens com.example.kfcglobaloperationsapp to javafx.fxml;
     exports com.example.kfcglobaloperationsapp;
