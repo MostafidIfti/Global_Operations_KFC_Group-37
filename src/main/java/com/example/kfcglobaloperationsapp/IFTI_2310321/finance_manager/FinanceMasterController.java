@@ -11,10 +11,9 @@ import java.io.IOException;
 
 public class FinanceMasterController {
 
-
     private void loadScreen(ActionEvent event, String fxmlFileName) {
         try {
-            FXMLLoader loader = new FXMLLoader(com.example.kfcglobaloperationsapp.HelloApplication.class.getResource("Ifti_2310321_FXML_FIles/Finance-Fxml_works/" + fxmlFileName));
+            FXMLLoader loader = new FXMLLoader(com.example.kfcglobaloperationsapp.HelloApplication.class.getResource("/com/example/kfcglobaloperationsapp/Ifti_2310321_FXML_FIles/Finance-Fxml_works/" + fxmlFileName));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -23,6 +22,8 @@ public class FinanceMasterController {
             e.printStackTrace();
         }
     }
-
-
+    @FXML
+    void openGoal1(ActionEvent event) {
+        loadScreen(event, "FinancialReportDashboard.fxml");
+    }
 }
