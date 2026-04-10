@@ -30,7 +30,7 @@ public class InventoryManagerController {
 
     private void loadInventoryData() {
         inventoryList.clear();
-        // Dummy data for KFC Warehouse (Name, Current Stock, Reorder Warning Level)
+
         inventoryList.add(new SM_InventoryItem("Chicken Breast (Boxes)", 150, 50));
         inventoryList.add(new SM_InventoryItem("Cooking Oil (Liters)", 20, 30)); // Will trigger Needs Restock
         inventoryList.add(new SM_InventoryItem("Secret Spice Mix (kg)", 8, 15)); // Will trigger Needs Restock

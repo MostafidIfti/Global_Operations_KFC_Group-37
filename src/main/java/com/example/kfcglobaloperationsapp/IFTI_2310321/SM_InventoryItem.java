@@ -11,7 +11,7 @@ public class SM_InventoryItem {
         this.currentStock = currentStock;
         this.reorderLevel = reorderLevel;
 
-        // This automatically sets the status!
+
         if (currentStock <= reorderLevel) {
             this.status = "Needs Restock";
         } else {
