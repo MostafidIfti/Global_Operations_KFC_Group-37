@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kfcglobaloperationsapp.IFTI_2310321.Finance_Manager.RevenueMonitoringController">
+   <children>
+      <Label layoutX="320.0" layoutY="14.0" text="Revenue Monitoring &amp; Analysis">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+
+      <Button layoutX="20.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnToDashboardButtonOnClick" text="&lt; Back to Dashboard" />
+
+      <Label layoutX="20.0" layoutY="65.0" text="Region:" />
+      <ComboBox fx:id="regionComboBox" layoutX="70.0" layoutY="61.0" prefWidth="150.0" />
+
+      <Label layoutX="240.0" layoutY="65.0" text="Start Date:" />
+      <DatePicker fx:id="startDatePicker" layoutX="310.0" layoutY="61.0" prefWidth="130.0" />
+
+      <Label layoutX="460.0" layoutY="65.0" text="End Date:" />
+      <DatePicker fx:id="endDatePicker" layoutX="520.0" layoutY="61.0" prefWidth="130.0" />
+
+      <Button layoutX="680.0" layoutY="61.0" mnemonicParsing="false" onAction="#analyzeRevenueButtonOnClick" prefHeight="25.0" prefWidth="150.0" text="Fetch &amp; Analyze" />
+
+      <Line endX="760.0" layoutX="120.0" layoutY="100.0" startX="-100.0" />
+
+      <BarChart fx:id="revenueChart" layoutX="20.0" layoutY="110.0" prefHeight="220.0" prefWidth="860.0" title="Regional Revenue Overview">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+
+      <TableView fx:id="revenueTableView" layoutX="20.0" layoutY="340.0" prefHeight="180.0" prefWidth="860.0">
+        <columns>
+          <TableColumn fx:id="storeCol" prefWidth="200.0" text="Store / Location" />
+          <TableColumn fx:id="regionCol" prefWidth="150.0" text="Region" />
+          <TableColumn fx:id="revenueCol" prefWidth="150.0" text="Total Revenue ($)" />
+          <TableColumn fx:id="growthCol" prefWidth="120.0" text="Growth (%)" />
+          <TableColumn fx:id="statusCol" prefWidth="220.0" text="Performance Status" />
+        </columns>
+      </TableView>
+
+      <Button layoutX="20.0" layoutY="540.0" mnemonicParsing="false" onAction="#selectStoreDetailsButtonOnClick" text="View Selected Store Details" />
+      <Button layoutX="200.0" layoutY="540.0" mnemonicParsing="false" onAction="#exportReportButtonOnClick" text="Export Report Document" />
+
+      <Label layoutX="450.0" layoutY="530.0" text="Detailed Breakdown:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="detailsLabel" alignment="TOP_LEFT" layoutX="450.0" layoutY="555.0" prefHeight="80.0" prefWidth="400.0" text="No store selected..." textFill="#0044ff" />
+
+      <Label fx:id="systemOutputLabel" alignment="CENTER" layoutX="20.0" layoutY="650.0" prefWidth="860.0" text="System Status: Ready" textFill="RED">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

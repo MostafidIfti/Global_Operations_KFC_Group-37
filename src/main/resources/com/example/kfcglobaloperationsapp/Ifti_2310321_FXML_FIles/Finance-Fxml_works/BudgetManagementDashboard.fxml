@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kfcglobaloperationsapp.IFTI_2310321.Finance_Manager.BudgetManagementController">
+   <children>
+      <Label layoutX="320.0" layoutY="14.0" text="Budget Management Panel">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+
+      <Button layoutX="20.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnToDashboardButtonOnClick" text="&lt; Back to Dashboard" />
+
+      <Label layoutX="20.0" layoutY="65.0" text="Fiscal Year:" />
+      <ComboBox fx:id="fiscalYearComboBox" layoutX="90.0" layoutY="61.0" prefWidth="100.0" />
+
+      <Label layoutX="220.0" layoutY="65.0" text="Region:" />
+      <ComboBox fx:id="regionComboBox" layoutX="270.0" layoutY="61.0" prefWidth="120.0" />
+
+      <Label layoutX="420.0" layoutY="65.0" text="Department:" />
+      <ComboBox fx:id="departmentComboBox" layoutX="500.0" layoutY="61.0" prefWidth="150.0" />
+
+      <Label layoutX="20.0" layoutY="110.0" text="Allocate Amount ($):" />
+      <TextField fx:id="amountTextField" layoutX="140.0" layoutY="106.0" prefWidth="150.0" />
+
+      <Button layoutX="320.0" layoutY="106.0" mnemonicParsing="false" onAction="#saveBudgetButtonOnClick" prefHeight="25.0" prefWidth="150.0" text="Save / Allocate Budget" />
+
+      <Line endX="700.0" layoutX="120.0" layoutY="160.0" startX="-100.0" />
+
+      <Label layoutX="20.0" layoutY="180.0" text="Current Budget Allocations:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+
+      <Label fx:id="corporateTotalLabel" layoutX="550.0" layoutY="180.0" text="Total Allocated: $0 / $5000000" textFill="#0000e1">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+
+      <TableView fx:id="budgetTableView" layoutX="20.0" layoutY="210.0" prefHeight="250.0" prefWidth="810.0">
+        <columns>
+          <TableColumn fx:id="deptCol" prefWidth="250.0" text="Department" />
+          <TableColumn fx:id="regionCol" prefWidth="200.0" text="Region" />
+          <TableColumn fx:id="amountCol" prefWidth="200.0" text="Allocated ($)" />
+          <TableColumn fx:id="statusCol" prefWidth="150.0" text="Status" />
+        </columns>
+      </TableView>
+
+      <Button layoutX="20.0" layoutY="480.0" mnemonicParsing="false" onAction="#exportReportButtonOnClick" text="Export PDF/Excel" />
+      <Button layoutX="160.0" layoutY="480.0" mnemonicParsing="false" onAction="#notifyDepartmentButtonOnClick" text="Notify Regional Officer" />
+
+      <Label fx:id="systemOutputLabel" alignment="CENTER" layoutX="20.0" layoutY="540.0" prefWidth="810.0" text="System Status: Ready" textFill="RED">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

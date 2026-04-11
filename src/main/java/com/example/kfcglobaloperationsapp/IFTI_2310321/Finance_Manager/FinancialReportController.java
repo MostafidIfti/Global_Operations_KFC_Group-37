@@ -4,9 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.PieChart;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -25,8 +22,6 @@ public class FinancialReportController {
     @FXML private TableColumn<ReportLineItem, Double> actualCol;
     @FXML private TableColumn<ReportLineItem, Double> budgetCol;
     @FXML private TableColumn<ReportLineItem, Double> varianceCol;
-    @FXML private LineChart<String, Number> trendChart;
-    @FXML private PieChart expensePieChart;
     @FXML private ComboBox<String> exportFormatComboBox;
     @FXML private Label systemStatusLabel;
 
@@ -55,6 +50,18 @@ public class FinancialReportController {
             systemStatusLabel.setText("Please select Start and End dates.");
             return false;
         }
+        if (!endDatePicker.getValue().isAfter(startDatePicker.getValue())) {
+            systemStatusLabel.setText("End date must be after Start date.");
+            return false;
+        }
+
+        int startYear = startDatePicker.getValue().getYear();
+        int endYear = endDatePicker.getValue().getYear();
+        if ((endYear - startYear) > 5) {
+            systemStatusLabel.setText("Date range cannot exceed 5 years.");
+            return false;
+        }
+
         return true;
     }
 
@@ -64,13 +71,8 @@ public class FinancialReportController {
             reportDataList.clear();
             reportDataList.add(new ReportLineItem("Q1 Revenue", 450000.0, 400000.0));
             reportDataList.add(new ReportLineItem("Q2 Revenue", 380000.0, 420000.0));
+            reportDataList.add(new ReportLineItem("Operational Costs", 150000.0, 160000.0));
             reportTableView.setItems(reportDataList);
-
-            trendChart.getData().clear();
-            XYChart.Series<String, Number> series = new XYChart.Series<>();
-            series.getData().add(new XYChart.Data<>("Jan", 120000));
-            series.getData().add(new XYChart.Data<>("Feb", 145000));
-            trendChart.getData().add(series);
 
             systemStatusLabel.setText("Report generated for " + regionComboBox.getValue());
         }
@@ -78,13 +80,21 @@ public class FinancialReportController {
 
     @FXML
     public void exportReportButtonOnAction(ActionEvent event) {
-        if (exportFormatComboBox.getValue() != null) {
+        if (exportFormatComboBox.getValue() == null) {
+            systemStatusLabel.setText("Select an export format.");
+        } else if (reportDataList.isEmpty()) {
+            systemStatusLabel.setText("Generate a report first.");
+        } else {
             systemStatusLabel.setText("Report exported as " + exportFormatComboBox.getValue());
         }
     }
 
     @FXML
     public void notifyStakeholdersButtonOnAction(ActionEvent event) {
-        systemStatusLabel.setText("Notification sent to stakeholders.");
+        if (reportDataList.isEmpty()) {
+            systemStatusLabel.setText("No report to send.");
+        } else {
+            systemStatusLabel.setText("Notification sent to stakeholders.");
+        }
     }
 }

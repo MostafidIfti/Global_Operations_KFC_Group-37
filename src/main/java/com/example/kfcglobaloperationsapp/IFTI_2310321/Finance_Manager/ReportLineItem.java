@@ -10,6 +10,7 @@ public class ReportLineItem {
         this.itemName = itemName;
         this.actualAmount = actualAmount;
         this.budgetedAmount = budgetedAmount;
+
         if (budgetedAmount != 0) {
             this.variancePercentage = ((actualAmount - budgetedAmount) / budgetedAmount) * 100;
         } else {
