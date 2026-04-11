@@ -16,10 +16,10 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0" prefWidth="855.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kfcglobaloperationsapp.Uzair_2521139.CreateNewOrderController">
+<BorderPane id="createNewOrder" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0" prefWidth="855.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kfcglobaloperationsapp.Uzair_2521139.Cashier.Controllers.CreateNewOrderController">
 
        <center>
-      <SplitPane dividerPositions="0.4160925196850393" layoutX="20.0" layoutY="61.0">
+      <SplitPane id="createNewOrder" dividerPositions="0.4160925196850393" layoutX="20.0" layoutY="61.0">
         <items>
             <BorderPane prefHeight="200.0" prefWidth="200.0">
                <top>
@@ -34,7 +34,7 @@
                <center>
                   <ScrollPane fx:id="orderItemSummarySCROLLPANE" prefHeight="331.0" prefWidth="335.0" BorderPane.alignment="CENTER">
                      <content>
-                        <VBox fx:id="orderItemSummaryVBOX" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="448.0" prefWidth="350.0" spacing="5.0">
+                        <VBox fx:id="orderItemSummaryVBOX" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onMouseClickUpdateUI" prefHeight="448.0" prefWidth="350.0" spacing="5.0">
                            <padding>
                               <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                            </padding>
@@ -47,7 +47,7 @@
                      <children>
                         <Label fx:id="subTotalSummaryLabel" layoutX="14.0" layoutY="15.0" text="Sub Total" />
                         <Label fx:id="vatSummaryLabel" layoutX="167.0" layoutY="15.0" text="Vat" />
-                        <Label fx:id="TotalSummaryLabel" layoutX="15.0" layoutY="51.0" text="TOTAL" />
+                        <Label fx:id="TotalSummaryLabel" layoutX="15.0" layoutY="51.0" text="Grand Total" />
                         <Label fx:id="discountSummaryLabel" layoutX="167.0" layoutY="51.0" text="Discount" />
                      </children>
                   </AnchorPane>
@@ -173,8 +173,8 @@
             <TextField fx:id="couponCodeTextField" layoutX="72.0" layoutY="22.0" promptText="Coupon Code" />
             <Label layoutX="14.0" layoutY="26.0" text="Coupon" />
             <Button fx:id="applyCouponButton" layoutX="233.0" layoutY="22.0" mnemonicParsing="false" text="Apply Coupon" />
-            <Button fx:id="paymentButton" layoutX="727.0" layoutY="22.0" mnemonicParsing="false" text="Proceed To Pay" />
-            <ComboBox fx:id="orderTypeComboBox" layoutX="372.0" layoutY="22.0" prefWidth="150.0" promptText="ORDER TYPE" />
+            <Button fx:id="paymentButton" layoutX="727.0" layoutY="22.0" mnemonicParsing="false" onAction="#onActionOrderPayment" text="Proceed To Pay" />
+            <ComboBox fx:id="orderTypeComboBox" layoutX="372.0" layoutY="22.0" onAction="#onActionCheck" prefWidth="150.0" promptText="ORDER TYPE" />
          </children>
       </AnchorPane>
    </bottom>

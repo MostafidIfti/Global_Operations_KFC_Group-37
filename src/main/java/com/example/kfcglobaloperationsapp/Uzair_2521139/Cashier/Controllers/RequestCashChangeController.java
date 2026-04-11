@@ -1,5 +1,7 @@
-package com.example.kfcglobaloperationsapp.Uzair_2521139;
+package com.example.kfcglobaloperationsapp.Uzair_2521139.Cashier.Controllers;
 
+import com.example.kfcglobaloperationsapp.Uzair_2521139.Database;
+import com.example.kfcglobaloperationsapp.Uzair_2521139.Model.RefillRequest;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -20,7 +22,7 @@ public class RequestCashChangeController {
 
     }
 
-    public RequestCashChangeController(TextField requestQuantityTextField, ComboBox denominationComboBox, Label totalAmountRequestLabel) {
+    public RequestCashChangeController(TextField requestQuantityTextField, ComboBox<Double> denominationComboBox, Label totalAmountRequestLabel) {
         this.requestQuantityTextField = requestQuantityTextField;
         this.denominationComboBox = denominationComboBox;
         this.totalAmountRequestLabel = totalAmountRequestLabel;
@@ -31,8 +33,6 @@ public class RequestCashChangeController {
         denominationComboBox.getItems().addAll(1000d, 500d, 200d, 100d, 50d, 20d, 10d, 5d);
     }
 
-
-
     public TextField getRequestQuantityTextField() {
         return requestQuantityTextField;
     }
@@ -41,11 +41,11 @@ public class RequestCashChangeController {
         this.requestQuantityTextField = requestQuantityTextField;
     }
 
-    public ComboBox getDenominationComboBox() {
+    public ComboBox<Double> getDenominationComboBox() {
         return denominationComboBox;
     }
 
-    public void setDenominationComboBox(ComboBox denominationComboBox) {
+    public void setDenominationComboBox(ComboBox<Double> denominationComboBox) {
         this.denominationComboBox = denominationComboBox;
     }
 

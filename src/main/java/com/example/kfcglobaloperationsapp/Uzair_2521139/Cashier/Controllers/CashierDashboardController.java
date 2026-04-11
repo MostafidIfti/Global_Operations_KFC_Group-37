@@ -1,12 +1,11 @@
-package com.example.kfcglobaloperationsapp.Uzair_2521139;
+package com.example.kfcglobaloperationsapp.Uzair_2521139.Cashier.Controllers;
 
+import com.example.kfcglobaloperationsapp.Uzair_2521139.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 
 
@@ -27,8 +26,8 @@ public class CashierDashboardController {
     @FXML
     public void initialize() {
 
-        welcomeTextLabel.setText("Welcome, " + Database.currentCashier.name);
-        cashierIdLabel.setText("CashierID: " + String.valueOf(Database.currentCashier.userID));
+        welcomeTextLabel.setText("Welcome, " + Database.currentCashier.getName());
+        cashierIdLabel.setText("CashierID: " + String.valueOf(Database.currentCashier.getUserID()));
     }
 
     @FXML

@@ -1,4 +1,4 @@
-package com.example.kfcglobaloperationsapp.Uzair_2521139;
+package com.example.kfcglobaloperationsapp.Uzair_2521139.Model;
 
 import java.util.ArrayList;
 
@@ -10,6 +10,8 @@ public class Order {
     private String status, orderType;
     private double subtotal, discountAmount, tax, grandTotal;
     private ArrayList<OrderItem> orderItemsList = new ArrayList<OrderItem>();
+    private Payment payement;
+
 
 
     public Order(int orderID, Cashier cashier, CashierSession cashierSession, String status) {
@@ -31,6 +33,26 @@ public class Order {
         this.grandTotal = grandTotal;
     }
 
+    public Order(int orderID, Cashier cashier, CashierSession cashierSession, String status, String orderType, double subtotal, double discountAmount, double tax, double grandTotal, ArrayList<OrderItem> orderItemsList) {
+        this.orderID = orderID;
+        this.cashier = cashier;
+        this.cashierSession = cashierSession;
+        this.status = status;
+        this.orderType = orderType;
+        this.subtotal = subtotal;
+        this.discountAmount = discountAmount;
+        this.tax = tax;
+        this.grandTotal = grandTotal;
+        this.orderItemsList = orderItemsList;
+    }
+
+    public Payment getPayement() {
+        return payement;
+    }
+
+    public void setPayement(Payment payement) {
+        this.payement = payement;
+    }
     public int getOrderID() {
         return orderID;
     }
@@ -107,13 +129,22 @@ public class Order {
         return orderItemsList;
     }
 
+
+    public String getOrderItemsList(boolean value) {
+        return this.toString();
+    }
+
     public void setOrderItemsList(ArrayList<OrderItem> orderItemsList) {
         this.orderItemsList = orderItemsList;
     }
 
-    public void addItem(){}
-    public void removeItem(){}
-    public void applyDiscount(){}
-    public void calculateTotal(){}
-    public void updateStatus(){}
+    @Override
+    public String toString() {
+        String orderInfo = "";
+        for (OrderItem orderItem: this.orderItemsList) {
+            orderInfo = orderInfo + orderItem.toString();
+        }
+        return orderInfo;
+    }
+
 }
