@@ -16,31 +16,32 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="492.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hanif_2310091_oop_project_final.StoreManagerController">
+<AnchorPane prefHeight="526.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kfcglobaloperationsapp.hanif_2310091_oop_project_final.StoreManagerController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="280.0" layoutY="13.0" prefHeight="34.0" prefWidth="240.0" text="Store Manager Dashboard">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="654.0" layoutY="18.0" mnemonicParsing="false" onAction="#LogoutOA" prefHeight="34.0" prefWidth="73.0" text="Logout" />
-      <TabPane layoutX="25.0" layoutY="74.0" prefHeight="398.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
+      <Button layoutX="705.0" layoutY="18.0" mnemonicParsing="false" onAction="#LogoutOA" prefHeight="34.0" prefWidth="73.0" text="Logout" />
+      <TabPane layoutX="13.0" layoutY="61.0" prefHeight="452.0" prefWidth="783.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Daily Operations">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <VBox layoutX="86.0" layoutY="45.0" prefHeight="243.0" prefWidth="262.0" spacing="15.0">
+                        <VBox layoutX="86.0" layoutY="26.0" prefHeight="270.0" prefWidth="262.0" spacing="30.0">
                            <children>
-                              <Label text="Record Daily Sales">
+                              <Label alignment="CENTER" prefHeight="31.0" prefWidth="262.0" text="Record Daily Sales">
                                  <font>
-                                    <Font name="System Bold" size="12.0" />
+                                    <Font name="System Bold" size="14.0" />
                                  </font>
                               </Label>
                               <DatePicker fx:id="salesDatePicker" promptText="Select closing date" />
                               <TextField fx:id="posSalesInput" promptText="Enter total POS sales" />
                               <TextField fx:id="physicalCashInput" promptText="Enter physical cash amount" />
                               <Button mnemonicParsing="false" onAction="#handleSaveSales" text="Save Daily Sales" />
+                              <Label prefHeight="63.0" prefWidth="262.0" text="Discrepancy: Pending" />
                               <Label fx:id="salesMessageLabel" prefHeight="30.0" prefWidth="263.0" />
                            </children>
                            <opaqueInsets>
@@ -48,20 +49,20 @@
                            </opaqueInsets>
                         </VBox>
                         <Separator layoutX="398.0" layoutY="33.0" orientation="VERTICAL" prefHeight="310.0" prefWidth="6.0" />
-                        <Label layoutX="506.0" layoutY="36.0" text="Inventory Management">
+                        <Label layoutX="513.0" layoutY="23.0" text="Inventory Management">
                            <font>
-                              <Font name="System Bold" size="12.0" />
+                              <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="inventoryTable" layoutX="451.0" layoutY="63.0" prefHeight="200.0" prefWidth="242.0">
+                        <TableView fx:id="inventoryTable" layoutX="442.0" layoutY="56.0" prefHeight="200.0" prefWidth="297.0">
                           <columns>
                             <TableColumn fx:id="colItemId" prefWidth="75.0" text="Item ID" />
-                            <TableColumn fx:id="colItemName" prefWidth="75.0" text="Item Name" />
-                              <TableColumn fx:id="colCurrentStock" prefWidth="91.19998779296876" text="Current Stock" />
+                            <TableColumn fx:id="colItemName" prefWidth="110.4000244140625" text="Item Name" />
+                              <TableColumn fx:id="colCurrentStock" prefWidth="111.199951171875" text="Current Stock" />
                           </columns>
                         </TableView>
-                        <TextField fx:id="updateStockInput" layoutX="498.0" layoutY="280.0" promptText="Enter new quantity" />
-                        <Button layoutX="530.0" layoutY="321.0" mnemonicParsing="false" onAction="#updateStockButtonOA" text="Update Stock" />
+                        <TextField fx:id="updateStockInput" layoutX="497.0" layoutY="283.0" prefHeight="26.0" prefWidth="186.0" promptText="Enter updated qty / wastage" />
+                        <Button layoutX="546.0" layoutY="330.0" mnemonicParsing="false" onAction="#updateStockButtonOA" text="Update Stock" />
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -69,37 +70,41 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <VBox layoutX="61.0" layoutY="31.0" prefHeight="286.0" prefWidth="230.0" spacing="15.0">
+                        <VBox layoutX="26.0" layoutY="31.0" prefHeight="322.0" prefWidth="306.0" spacing="15.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="18.0" prefWidth="236.0" text="Log Employee Attendance">
+                              <Label alignment="CENTER" prefHeight="18.0" prefWidth="314.0" text="Log Employee Attendance">
                                  <font>
-                                    <Font name="System Bold" size="12.0" />
+                                    <Font name="System Bold" size="14.0" />
                                  </font>
                               </Label>
-                              <ComboBox fx:id="employeeDropdown" prefHeight="26.0" prefWidth="230.0" promptText="Select Employee" />
-                              <DatePicker fx:id="attendanceDatePicker" prefHeight="26.0" prefWidth="233.0" promptText="Select Date" />
-                              <TextField fx:id="hoursWorkedInput" promptText="Enter hours worked" />
-                              <Button mnemonicParsing="false" onAction="#handleSaveAttendanceOA" prefHeight="26.0" prefWidth="236.0" text="Save Attendance" />
-                              <Label fx:id="attendanceMessageLabel" prefHeight="34.0" prefWidth="236.0" />
+                              <ComboBox fx:id="employeeDropdown" prefHeight="26.0" prefWidth="310.0" promptText="Select Employee" />
+                              <DatePicker fx:id="attendanceDatePicker" prefHeight="26.0" prefWidth="318.0" promptText="Select Date" />
+                              <Button mnemonicParsing="false" onAction="#MarkPresentOA" text="Mark Present" />
+                              <Button layoutX="10.0" layoutY="127.0" mnemonicParsing="false" onAction="#MarkAbsentOA" prefHeight="26.0" prefWidth="86.0" text="Mark Absent" />
+                              <Label fx:id="dailysummary" prefHeight="18.0" prefWidth="320.0" text="Daily Summary: 0 Present | 0 Absent" />
+                              <Button mnemonicParsing="false" onAction="#handleSaveAttendanceOA" prefHeight="26.0" prefWidth="328.0" text="Save Attendance" />
+                              <Label fx:id="attendanceMessageLabel" prefHeight="34.0" prefWidth="311.0" />
                            </children>
                         </VBox>
                         <Separator layoutX="353.0" layoutY="13.0" orientation="VERTICAL" prefHeight="357.0" prefWidth="14.0" />
-                        <VBox layoutX="378.0" layoutY="31.0" prefHeight="307.0" prefWidth="337.0" spacing="15.0">
+                        <VBox layoutX="378.0" layoutY="31.0" prefHeight="330.0" prefWidth="378.0" spacing="15.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="18.0" prefWidth="342.0" text="Store Staff Roster">
+                              <Label alignment="CENTER" prefHeight="20.0" prefWidth="378.0" text="Store Staff Roster">
                                  <font>
-                                    <Font name="System Bold" size="12.0" />
+                                    <Font name="System Bold" size="14.0" />
                                  </font>
                               </Label>
                               <TableView fx:id="staffTable" prefHeight="200.0" prefWidth="274.0">
                                 <columns>
-                                  <TableColumn prefWidth="75.0" text="Emp ID" />
-                                  <TableColumn prefWidth="85.60006713867188" text="Name" />
-                                    <TableColumn prefWidth="81.5999755859375" text="Role" />
-                                    <TableColumn prefWidth="93.5999755859375" text="Status" />
+                                  <TableColumn fx:id="colEmpId" prefWidth="84.0" text="Emp ID" />
+                                  <TableColumn fx:id="colEmpName" prefWidth="104.0" text="Name" />
+                                    <TableColumn fx:id="colEmpRole" prefWidth="104.00006103515625" text="Role" />
+                                    <TableColumn fx:id="colEmpStatus" prefWidth="86.4000244140625" text="Status" />
                                 </columns>
                               </TableView>
-                              <Button mnemonicParsing="false" onAction="#handleViewPerformanceOA" prefHeight="26.0" prefWidth="343.0" text="          View Employee Performance" />
+                              <Button mnemonicParsing="false" onAction="#handleViewPerformanceOA" prefHeight="26.0" prefWidth="378.0" text="          View Employee Performance" />
+                              <ComboBox fx:id="ratingDropdown" prefWidth="376.0" promptText="Select Rating (1-5)" />
+                              <Button mnemonicParsing="false" onAction="#handleSubmitEvaluationOA" prefHeight="26.0" prefWidth="393.0" text="Submit Evaluation" />
                            </children>
                         </VBox>
                      </children></AnchorPane>
@@ -124,61 +129,110 @@
                            </children>
                         </VBox>
                         <Separator layoutX="384.0" layoutY="14.0" orientation="VERTICAL" prefHeight="342.0" prefWidth="7.0" />
-                        <Label layoutX="492.0" layoutY="22.0" text="Issue &amp; Feedback Tracker">
+                        <Label layoutX="492.0" layoutY="6.0" text="Issue &amp; Feedback Tracker">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="issuesTable" layoutX="410.0" layoutY="65.0" prefHeight="200.0" prefWidth="325.0">
+                        <TableView fx:id="issuesTable" layoutX="410.0" layoutY="33.0" prefHeight="200.0" prefWidth="338.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="Issue ID" />
-                            <TableColumn prefWidth="75.0" text="Type" />
-                              <TableColumn prefWidth="88.00006103515625" text="Description" />
-                              <TableColumn prefWidth="85.60000000000002" text="Status" />
+                            <TableColumn fx:id="colIssueId" prefWidth="75.0" text="Issue ID" />
+                            <TableColumn fx:id="colIssueType" prefWidth="75.0" text="Type" />
+                              <TableColumn fx:id="colIssueDesc" prefWidth="100.00006103515625" text="Description" />
+                              <TableColumn fx:id="colIssueStatus" prefWidth="87.199951171875" text="Status" />
                           </columns>
                         </TableView>
-                        <Button layoutX="547.0" layoutY="295.0" mnemonicParsing="false" onAction="#handleResolveIssueOA" text="Mark as Resolved" />
+                        <Button layoutX="526.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleResolveIssueOA" text="Submit Response" />
+                        <TextArea fx:id="responseInputTextArea" layoutX="411.0" layoutY="245.0" prefHeight="66.0" prefWidth="338.0" promptText="Enter response to customer feedback..." />
                      </children></AnchorPane>
                </content>
             </Tab>
             <Tab text="Summary &amp; Requests">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="408.0" prefWidth="750.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="422.0" prefWidth="768.0">
                      <children>
-                        <VBox layoutX="14.0" layoutY="11.0" prefHeight="353.0" prefWidth="282.0" spacing="15.0">
+                        <VBox layoutX="14.0" layoutY="16.0" prefHeight="362.0" prefWidth="306.0" spacing="15.0">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="287.0" text="Submit Regional Request">
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="330.0" text="Submit Regional Request">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Label>
                               <ComboBox fx:id="requestTypeDropdown" prefWidth="150.0" promptText="Select Request Type" />
+                              <TextField fx:id="budgetamount" promptText="Enter Budget Amount ($)" />
                               <TextArea fx:id="requestDetailsInput" prefHeight="200.0" prefWidth="200.0" promptText="Enter request details and justification here..." />
                               <Button mnemonicParsing="false" onAction="#handleSendRequestOA" prefHeight="26.0" prefWidth="102.0" text="Send Request" />
-                              <Label prefHeight="29.0" prefWidth="288.0" />
+                              <Label fx:id="requestMessageLabel" prefHeight="29.0" prefWidth="288.0" />
                            </children>
                         </VBox>
-                        <Separator layoutX="336.0" layoutY="14.0" orientation="VERTICAL" prefHeight="350.0" prefWidth="4.0" />
-                        <Label layoutX="464.0" layoutY="12.0" text="Store Performance Summary">
+                        <Separator layoutX="336.0" layoutY="14.0" orientation="VERTICAL" prefHeight="406.0" prefWidth="6.0" />
+                        <Label layoutX="519.0" layoutY="9.0" text="Low Stock Items">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="performanceSummaryBox" editable="false" layoutX="355.0" layoutY="37.0" prefHeight="79.0" prefWidth="381.0" />
-                        <Label layoutX="545.0" layoutY="299.0" text="Label" />
-                        <TableView fx:id="requestsTable" layoutX="356.0" layoutY="162.0" prefHeight="200.0" prefWidth="378.0">
+                        <TableView fx:id="lowStockTable" layoutX="358.0" layoutY="35.0" prefHeight="110.0" prefWidth="405.0">
                           <columns>
-                            <TableColumn prefWidth="97.5999755859375" text="Req ID" />
-                            <TableColumn prefWidth="109.60000610351562" text="Type" />
-                              <TableColumn prefWidth="171.199951171875" text="Status" />
+                            <TableColumn fx:id="colLowStockId" prefWidth="126.4000244140625" text="Item ID" />
+                            <TableColumn fx:id="colLowStockName" prefWidth="135.99993896484375" text="Item Name" />
+                              <TableColumn fx:id="colLowStockQty" prefWidth="132.0" text="Current Stock" />
                           </columns>
                         </TableView>
-                        <Label layoutX="478.0" layoutY="137.0" text="Pending Requests Status">
+                        <TextField fx:id="restockQtyInput" layoutX="358.0" layoutY="155.0" prefHeight="26.0" prefWidth="406.0" promptText="Enter restock quantity" />
+                        <Button layoutX="396.0" layoutY="192.0" mnemonicParsing="false" onAction="#handleCalculateCostOA" text="Calculate Cost" />
+                        <Button layoutX="605.0" layoutY="192.0" mnemonicParsing="false" onAction="#handleSubmitRestockOA" text="Submit Restock" />
+                        <Label fx:id="estimatedCostLabel" alignment="CENTER" layoutX="425.0" layoutY="228.0" prefHeight="27.0" prefWidth="262.0" text="Estimated Cost: $0.00" />
+                        <Label layoutX="492.0" layoutY="269.0" text="Pending Requests Status">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
+                        <TableView fx:id="pendingRequestsTable" layoutX="360.0" layoutY="296.0" prefHeight="123.0" prefWidth="404.0">
+                          <columns>
+                            <TableColumn fx:id="colReqId" prefWidth="81.60003662109375" text="Req ID" />
+                            <TableColumn fx:id="colReqType" prefWidth="109.5999755859375" text="Type" />
+                              <TableColumn fx:id="colReqAmount" prefWidth="107.99993896484375" text="Amount" />
+                              <TableColumn fx:id="colReqStatus" prefWidth="105.60009765625" text="Status" />
+                          </columns>
+                        </TableView>
+                        <Separator layoutX="360.0" layoutY="259.0" prefHeight="3.0" prefWidth="402.0" />
                      </children></AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Expense Management">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="426.0" prefWidth="783.0">
+                     <children>
+                        <VBox layoutX="14.0" layoutY="22.0" prefHeight="364.0" prefWidth="306.0" spacing="30.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="330.0" text="Expense Entry Section">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="expenseMonthDropdown" prefHeight="34.0" prefWidth="311.0" promptText="Select Month" />
+                              <TextField fx:id="expenseCategoryInput" prefHeight="36.0" prefWidth="306.0" promptText="Expense Category" />
+                              <TextField fx:id="expenseAmountInput" layoutX="10.0" layoutY="86.0" prefHeight="38.0" prefWidth="306.0" promptText="Enter Amount ($)" />
+                              <Button mnemonicParsing="false" onAction="#handleSaveExpenseOA" prefHeight="31.0" prefWidth="102.0" text="Save Expense" />
+                           </children>
+                        </VBox>
+                        <Separator layoutX="336.0" layoutY="14.0" orientation="VERTICAL" prefHeight="381.0" prefWidth="4.0" />
+                        <Label layoutX="471.0" layoutY="22.0" text="Expense Tracking Section">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <TableView fx:id="expenseTrackingTable" layoutX="358.0" layoutY="57.0" prefHeight="198.0" prefWidth="406.0">
+                           <columns>
+                              <TableColumn fx:id="colExpenseId" prefWidth="126.4000244140625" text="Expense ID" />
+                              <TableColumn fx:id="colExpenseCategory" prefWidth="154.4000244140625" text="Category" />
+                              <TableColumn fx:id="colExpenseAmount" prefWidth="124.0" text="Amount" />
+                           </columns>
+                        </TableView>
+                        <Label fx:id="totalExpenseLabel" alignment="CENTER" layoutX="424.0" layoutY="280.0" prefHeight="34.0" prefWidth="261.0" text="Total Expense: $0.00" />
+                        <Label fx:id="expenseRatioLabel" alignment="CENTER" layoutX="424.0" layoutY="331.0" prefHeight="34.0" prefWidth="261.0" text="Expense Ratio: 0%" />
+                     </children>
+                  </AnchorPane>
                </content>
             </Tab>
         </tabs>

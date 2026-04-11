@@ -5,7 +5,7 @@ module com.example.kfcglobaloperationsapp {
     opens com.example.kfcglobaloperationsapp to javafx.fxml;
     exports com.example.kfcglobaloperationsapp;
 
-    // Add these two lines for your custom folder:
-    opens com.example.kfcglobaloperationsapp.IFTI_2310321 to javafx.fxml;
-    exports com.example.kfcglobaloperationsapp.IFTI_2310321;
+    // ADD THESE TWO LINES RIGHT HERE:
+    opens com.example.kfcglobaloperationsapp.hanif_2310091_oop_project_final to javafx.fxml;
+    exports com.example.kfcglobaloperationsapp.hanif_2310091_oop_project_final;
 }

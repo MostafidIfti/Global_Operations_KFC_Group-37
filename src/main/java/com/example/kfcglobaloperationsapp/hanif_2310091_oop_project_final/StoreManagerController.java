@@ -1,221 +1,549 @@
-package com.example.hanif_2310091_oop_project_final;
-
+package com.example.kfcglobaloperationsapp.hanif_2310091_oop_project_final;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class StoreManagerController {
-    @javafx.fxml.FXML
-    private TableView<InventoryItem> inventoryTable;
-    @javafx.fxml.FXML
-    private DatePicker salesDatePicker;
-    @javafx.fxml.FXML
-    private TextField physicalCashInput;
-    @javafx.fxml.FXML
-    private Label salesMessageLabel;
-    @javafx.fxml.FXML
-    private TextField updateStockInput;
-    @javafx.fxml.FXML
-    private TextField posSalesInput;
-    @javafx.fxml.FXML
-    private TextArea requestDetailsInput;
-    @javafx.fxml.FXML
-    private ComboBox<String> employeeDropdown;
-    @javafx.fxml.FXML
-    private Label issueMessageLabel;
-    @javafx.fxml.FXML
-    private TableView<?> issuesTable;
-    @javafx.fxml.FXML
-    private TableView<?> staffTable;
-    @javafx.fxml.FXML
-    private TextArea performanceSummaryBox;
-    @javafx.fxml.FXML
-    private TextField hoursWorkedInput;
-    @javafx.fxml.FXML
-    private ComboBox<String> issueTypeDropdown;
-    @javafx.fxml.FXML
-    private Label attendanceMessageLabel;
-    @javafx.fxml.FXML
-    private DatePicker attendanceDatePicker;
-    @javafx.fxml.FXML
-    private TextArea issueDescriptionInput;
-    @javafx.fxml.FXML
-    private ComboBox<String> requestTypeDropdown;
-    @javafx.fxml.FXML
-    private DatePicker issueDatePicker;
-    @javafx.fxml.FXML
-    private TableView<?> requestsTable;
-    @javafx.fxml.FXML
-    private TableColumn<InventoryItem, Integer> colCurrentStock;
-    @javafx.fxml.FXML
-    private TableColumn<InventoryItem, String> colItemId;
-    @javafx.fxml.FXML
-    private TableColumn<InventoryItem, String> colItemName;
+    private final ObservableList<InventoryItem> inventoryList = FXCollections.observableArrayList();
+    private final ObservableList<Employee> employeeList = FXCollections.observableArrayList();
+    private final ObservableList<StoreIssue> issueList = FXCollections.observableArrayList();
+    private final ObservableList<StoreRequest> requestList = FXCollections.observableArrayList();
+    private final ObservableList<Expense> expenseList = FXCollections.observableArrayList();
+
+    @FXML private ComboBox<String> expenseMonthDropdown;
+    @FXML private TextField expenseAmountInput;
+    @FXML private TextField updateStockInput;
+    @FXML private ComboBox<String> issueTypeDropdown;
+    @FXML private TextField posSalesInput;
+    @FXML private TextArea responseInputTextArea;
+    @FXML private Label attendanceMessageLabel;
+    @FXML private TextField expenseCategoryInput;
+    @FXML private TextField physicalCashInput;
+    @FXML private TextField restockQtyInput;
+    @FXML private ComboBox<String> employeeDropdown;
+    @FXML private ComboBox<Integer> ratingDropdown;
+    @FXML private DatePicker attendanceDatePicker;
+    @FXML private DatePicker issueDatePicker;
+    @FXML private Label issueMessageLabel;
+    @FXML private Label expenseRatioLabel;
+    @FXML private Label dailysummary;
+    @FXML private Label salesMessageLabel;
+    @FXML private TextArea issueDescriptionInput;
+    @FXML private ComboBox<String> requestTypeDropdown;
+    @FXML private TextArea requestDetailsInput;
+    @FXML private Label totalExpenseLabel;
+    @FXML private Label requestMessageLabel;
+    @FXML private DatePicker salesDatePicker;
+    @FXML private Label estimatedCostLabel;
+    @FXML private TextField budgetamount;
+    @FXML private TableView<Employee> staffTable;
+    @FXML private TableColumn<Employee, String> colEmpId;
+    @FXML private TableColumn<Employee, String> colEmpName;
+    @FXML private TableColumn<Employee, String> colEmpRole;
+    @FXML private TableColumn<Employee, String> colEmpStatus;
+    @FXML private TableView<InventoryItem> inventoryTable;
+    @FXML private TableColumn<InventoryItem, String> colItemId;
+    @FXML private TableColumn<InventoryItem, String> colItemName;
+    @FXML private TableColumn<InventoryItem, Integer> colCurrentStock;
+    @FXML private TableView<InventoryItem> lowStockTable;
+    @FXML private TableColumn<InventoryItem, String> colLowStockId;
+    @FXML private TableColumn<InventoryItem, String> colLowStockName;
+    @FXML private TableColumn<InventoryItem, Integer> colLowStockQty;
+    @FXML private TableView<StoreIssue> issuesTable;
+    @FXML private TableColumn<StoreIssue, String> colIssueId;
+    @FXML private TableColumn<StoreIssue, String> colIssueType;
+    @FXML private TableColumn<StoreIssue, String> colIssueDesc;
+    @FXML private TableColumn<StoreIssue, String> colIssueStatus;
+    @FXML private TableView<StoreRequest> pendingRequestsTable;
+    @FXML private TableColumn<StoreRequest, String> colReqId;
+    @FXML private TableColumn<StoreRequest, String> colReqType;
+    @FXML private TableColumn<StoreRequest, Double> colReqAmount;
+    @FXML private TableColumn<StoreRequest, String> colReqStatus;
+    @FXML private TableView<Expense> expenseTrackingTable;
+    @FXML private TableColumn<Expense, String> colExpenseId;
+    @FXML private TableColumn<Expense, String> colExpenseCategory;
+    @FXML private TableColumn<Expense, Double> colExpenseAmount;
 
 
-    @javafx.fxml.FXML
+    @FXML
     public void initialize() {
-        employeeDropdown.getItems().addAll("Hanif (Cashier)", "Sarah (Cook)", "Mike (Janitor)");
-        issueTypeDropdown.getItems().addAll("Customer Complaint", "Positive Feedback", "Equipment Breakdown");
-        requestTypeDropdown.getItems().addAll("Extra Budget", "Emergency Restock", "Maintenance Approval");
-        performanceSummaryBox.setText("--- WEEKLY STORE SUMMARY ---\n\nTotal Sales: $12,450.00\nActive Staff: 3\nPending Issues: 0\nStatus: Performing above target.");
+        loadAllData();
+        expenseMonthDropdown.getItems().addAll("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+        ratingDropdown.getItems().addAll(1, 2, 3, 4, 5);
+        issueTypeDropdown.getItems().addAll("Customer Complaint", "Facility Issue", "Equipment Breakdown", "Staff Dispute", "Other");
+        requestTypeDropdown.getItems().addAll("Budget Request", "Maintenance Approval", "Policy Clarification", "Other");
+        employeeDropdown.getItems().addAll("EMP01 - John Doe", "EMP02 - Jane Smith", "EMP03 - Alex Johnson");
+        colItemId.setCellValueFactory(new PropertyValueFactory<>("itemId"));
+        colItemName.setCellValueFactory(new PropertyValueFactory<>("itemName"));
+        colCurrentStock.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        colEmpId.setCellValueFactory(new PropertyValueFactory<>("empId"));
+        colEmpName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colEmpRole.setCellValueFactory(new PropertyValueFactory<>("role"));
+        colEmpStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+        colIssueId.setCellValueFactory(new PropertyValueFactory<>("issueId"));
+        colIssueType.setCellValueFactory(new PropertyValueFactory<>("type"));
+        colIssueDesc.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colIssueStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+        colLowStockId.setCellValueFactory(new PropertyValueFactory<>("itemId")); // Changed from itemName
+        colLowStockName.setCellValueFactory(new PropertyValueFactory<>("itemName"));
+        colLowStockQty.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        colReqId.setCellValueFactory(new PropertyValueFactory<>("requestId"));
+        colReqType.setCellValueFactory(new PropertyValueFactory<>("requestType"));
+        colReqAmount.setCellValueFactory(new PropertyValueFactory<>("budget"));
+        colReqStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+        colExpenseId.setCellValueFactory(new PropertyValueFactory<>("expenseId"));
+        colExpenseCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
+        colExpenseAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        inventoryTable.setItems(inventoryList);
+        lowStockTable.setItems(inventoryList); // Both tables use the same inventory data!
+        staffTable.setItems(employeeList);
+        issuesTable.setItems(issueList);
+        pendingRequestsTable.setItems(requestList);
+        expenseTrackingTable.setItems(expenseList);
 
-        colItemId.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("id"));
-        colItemName.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("name"));
-        colCurrentStock.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("stock"));
-
-        javafx.collections.ObservableList<InventoryItem> inventoryData = javafx.collections.FXCollections.observableArrayList(
-                new InventoryItem("ITM001", "Espresso Beans (Lbs)", 25),
-                new InventoryItem("ITM002", "Whole Milk (Gallons)", 12),
-                new InventoryItem("ITM003", "Paper Cups (Sleeves)", 150)
-        );
-
-        // 3. Put the data into the table
-        inventoryTable.setItems(inventoryData);
-    }
-
-    @javafx.fxml.FXML
-    public void updateStockButtonOA(ActionEvent actionEvent) {
-        try {
-            int newQuantity = Integer.parseInt(updateStockInput.getText());
-
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Stock Update");
-            alert.setHeaderText(null);
-            alert.setContentText("Inventory stock successfully updated to: " + newQuantity);
-            alert.showAndWait();
-
-            updateStockInput.clear();
-
-        } catch (NumberFormatException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Input Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Please enter a valid whole number for the new quantity.");
-            alert.showAndWait();
+        if (inventoryList.isEmpty()) {
+            inventoryList.addAll(
+                    // Now using all 5 arguments: ID, Name, Quantity, Threshold, Status
+                    new InventoryItem("INV-01", "Original Recipe Chicken", 150, 50, "In Stock"),
+                    new InventoryItem("INV-02", "Zinger Buns", 80, 20, "In Stock"),
+                    new InventoryItem("INV-03", "Frying Oil (Liters)", 45, 15, "In Stock")
+            );
         }
-        System.out.println("Update Stock button clicked!");
+
+        if (employeeList.isEmpty()) {
+            employeeList.addAll(
+                    new Employee("EMP01", "John Doe", "Cashier", "Pending"),
+                    new Employee("EMP02", "Jane Smith", "Cook", "Pending"),
+                    new Employee("EMP03", "Alex Johnson", "Shift Supervisor", "Pending")
+            );
+        }
+
+
     }
 
-    @javafx.fxml.FXML
-    public void handleSaveSales(ActionEvent actionEvent) {
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    private void processAttendance(String status) {
+        saveAllData();
+        String selectedEmpStr = employeeDropdown.getValue();
+
+        // 1. NEW VALIDATION: Check if a date is selected first!
+        if (attendanceDatePicker.getValue() == null) {
+            attendanceMessageLabel.setText("Error: Please select a date first.");
+            attendanceMessageLabel.setStyle("-fx-text-fill: red;");
+            return;
+        }
+
+        // 2. Existing validation: Check if an employee is selected
+        if (selectedEmpStr == null) {
+            attendanceMessageLabel.setText("Error: Select an employee first.");
+            attendanceMessageLabel.setStyle("-fx-text-fill: red;");
+            return;
+        }
+
+        String empId = selectedEmpStr.split(" ")[0];
+
+        for (Employee emp : employeeList) {
+            if (emp.getEmpId().equals(empId)) {
+                emp.setStatus(status);
+                break;
+            }
+        }
+        staffTable.refresh();
+        updateDailySummary();
+
+        // 3. Upgraded Success Message: Now includes the date!
+        attendanceMessageLabel.setText(selectedEmpStr + " marked " + status + " on " + attendanceDatePicker.getValue());
+        attendanceMessageLabel.setStyle("-fx-text-fill: green;");
+    }
+    private void updateDailySummary() {
+        int present = 0;
+        int absent = 0;
+        for (Employee emp : employeeList) {
+            if ("Present".equals(emp.getStatus())) present++;
+            if ("Absent".equals(emp.getStatus())) absent++;
+        }
+        dailysummary.setText("Daily Summary: " + present + " Present | " + absent + " Absent");
+    }
+
+
+    @FXML public void MarkPresentOA(ActionEvent actionEvent) {
+        processAttendance("Present");
+
+    }
+
+
+    @FXML public void handleSaveAttendanceOA(ActionEvent actionEvent) {
+        if (attendanceDatePicker.getValue() == null) {
+            attendanceMessageLabel.setText("Error: Please select a date.");
+            attendanceMessageLabel.setStyle("-fx-text-fill: red;");
+            return;
+        }
+        showAlert("Success", "Attendance for " + attendanceDatePicker.getValue() + " has been saved globally.");
+        employeeDropdown.getSelectionModel().clearSelection();
+        attendanceDatePicker.setValue(null);
+        attendanceMessageLabel.setText("");
+
+    }
+
+
+    @FXML public void updateStockButtonOA(ActionEvent actionEvent) {
+        InventoryItem selected = inventoryTable.getSelectionModel().getSelectedItem();
+
+        // 1. Validation: Did they select an item?
+        if (selected == null) {
+            showAlert("Selection Error", "Please select an inventory item from the table first.");
+            return;
+        }
+
         try {
-            if (salesDatePicker.getValue() == null) {
-                salesMessageLabel.setText("Error: Please select a closing date.");
-                salesMessageLabel.setStyle("-fx-text-fill: red;");
+            int newQty = Integer.parseInt(updateStockInput.getText());
+
+            // 2. Validation: Is the number negative?
+            if (newQty < 0) {
+                showAlert("Input Error", "Quantity cannot be negative. Please enter a valid number.");
                 return;
             }
 
+            // 3. Success: Update the item and refresh the tables
+            selected.setQuantity(newQty);
+            inventoryTable.refresh();
+            lowStockTable.refresh();
+
+            // Clean up the UI
+            updateStockInput.clear();
+            showAlert("Information", "Inventory updated! " + selected.getItemName() + " is now at " + newQty + " units.");
+
+        } catch (NumberFormatException e) {
+            // 4. Validation: Did they type letters or leave it empty?
+            showAlert("Input Error", "Please enter a valid whole number for the stock quantity.");
+        }
+        saveAllData();
+    }
+
+
+    @FXML public void handleSubmitIssueOA(ActionEvent actionEvent) {
+        String type = issueTypeDropdown.getValue();
+        String description = issueDescriptionInput.getText();
+        java.time.LocalDate date = issueDatePicker.getValue();
+
+        // Validation
+        if (type == null || description.trim().isEmpty() || date == null) {
+            issueMessageLabel.setText("Error: Please fill out all fields.");
+            issueMessageLabel.setStyle("-fx-text-fill: red;");
+            return;
+        }
+
+        // Create new issue and add to list
+        String newIssueId = "ISSUE-" + (issueList.size() + 1);
+        StoreIssue newIssue = new StoreIssue(newIssueId, type, description, "Open");
+        issueList.add(newIssue);
+
+        // Success messages & clear inputs
+        issueMessageLabel.setText("Issue logged successfully!");
+        issueMessageLabel.setStyle("-fx-text-fill: green;");
+
+        issueTypeDropdown.getSelectionModel().clearSelection();
+        issueDescriptionInput.clear();
+        issueDatePicker.setValue(null);
+        saveAllData();
+
+    }
+
+
+    @FXML public void handleSaveExpenseOA(ActionEvent actionEvent) {
+        String category = expenseCategoryInput.getText();
+        String amountStr = expenseAmountInput.getText();
+
+        if (category.isEmpty() || amountStr.isEmpty()) {
+            showAlert("Validation Error", "Please enter a category and amount.");
+            return;
+        }
+        try {
+            double amount = Double.parseDouble(amountStr);
+            Expense e = new Expense("EXP-" + (expenseList.size() + 1), category, amount);
+            expenseList.add(e);
+
+            // 1. Existing code: Calculate and set the total expense
+            double total = expenseList.stream().mapToDouble(Expense::getAmount).sum();
+            totalExpenseLabel.setText("Total Expense: $" + total);
+
+            // 2. NEW CODE: Calculate and set the Expense Ratio!
+            double targetBudget = 5000.0; // <-- Change this number to whatever your store's monthly budget is!
+            double ratio = (total / targetBudget) * 100.0;
+            expenseRatioLabel.setText(String.format("Expense Ratio: %.1f%%", ratio));
+
+            // 3. Existing code: Clear the inputs
+            expenseCategoryInput.clear();
+            expenseAmountInput.clear();
+
+        } catch (NumberFormatException e) {
+            showAlert("Input Error", "Please enter a valid number for the amount.");
+        }
+        saveAllData();
+    }
+
+
+    @FXML public void handleViewPerformanceOA(ActionEvent actionEvent) {
+        Employee selected = staffTable.getSelectionModel().getSelectedItem();
+
+        if (selected == null) {
+            showAlert("Selection Error", "Please select an employee from the table first.");
+            return;
+        }
+
+        String currentStatus = selected.getStatus();
+        String message = "";
+
+        // Check the status and change the message accordingly
+        switch (currentStatus) {
+            case "Present":
+                message = "Employee " + selected.getName() + " is on shift and demonstrating satisfactory performance.";
+                break;
+            case "Absent":
+                message = "Employee " + selected.getName() + " is currently marked Absent. Performance tracking is paused.";
+                break;
+            case "Pending":
+                message = "Employee " + selected.getName() + "'s attendance is Pending. Please log their attendance before reviewing performance.";
+                break;
+            default:
+                message = "Employee " + selected.getName() + " currently has a satisfactory performance record.";
+                break;
+        }
+
+        showAlert("Performance Record", message);
+    }
+    @FXML public void handleSaveSales(ActionEvent actionEvent) {
+        if (salesDatePicker.getValue() == null) {
+            salesMessageLabel.setText("Error: Please select a closing date.");
+            salesMessageLabel.setStyle("-fx-text-fill: red;");
+            return; // Stops the code from running the math below
+        }
+
+
+        try {
             double posSales = Double.parseDouble(posSalesInput.getText());
             double physicalCash = Double.parseDouble(physicalCashInput.getText());
 
-            double difference = physicalCash - posSales;
+            double discrepancy = physicalCash - posSales;
 
-            if (difference == 0) {
-                salesMessageLabel.setText("Success: Registers balance perfectly!");
+            if (discrepancy == 0) {
+                // Now it includes the date in the success message!
+                salesMessageLabel.setText("Success: " + salesDatePicker.getValue() + " sales match!");
                 salesMessageLabel.setStyle("-fx-text-fill: green;");
-            } else if (difference > 0) {
-
-                salesMessageLabel.setText(String.format("Warning: Register is OVER by $%.2f", difference));
-                salesMessageLabel.setStyle("-fx-text-fill: orange;");
             } else {
-                salesMessageLabel.setText(String.format("Alert: Register is SHORT by $%.2f", Math.abs(difference)));
+                salesMessageLabel.setText(salesDatePicker.getValue() + " Discrepancy: $" + discrepancy);
                 salesMessageLabel.setStyle("-fx-text-fill: red;");
             }
         } catch (NumberFormatException e) {
             salesMessageLabel.setText("Error: Please enter valid numbers.");
             salesMessageLabel.setStyle("-fx-text-fill: red;");
         }
-        System.out.println("Save Sales button clicked!");
     }
 
-    @javafx.fxml.FXML
-    public void LogoutOA(ActionEvent actionEvent) {
-        System.out.println("Logout button clicked!");
+
+    @FXML public void MarkAbsentOA(ActionEvent actionEvent) {
+        processAttendance("Absent");
     }
 
-    @javafx.fxml.FXML
-    public void handleSaveAttendanceOA(ActionEvent actionEvent) {
+
+    @FXML public void handleSendRequestOA(ActionEvent actionEvent) {
+        String type = requestTypeDropdown.getValue();
+        String budgetStr = budgetamount.getText();
+        if (type == null || budgetStr.isEmpty()) {
+            requestMessageLabel.setText("Error: Fill all fields!");
+            return;
+        }
         try {
-            if (employeeDropdown.getValue() == null || attendanceDatePicker.getValue() == null) {
-                attendanceMessageLabel.setText("Error: Please select an employee and a date.");
-                attendanceMessageLabel.setStyle("-fx-text-fill: red;");
+            double amount = Double.parseDouble(budgetStr);
+            StoreRequest newReq = new StoreRequest(
+                    "REQ-" + (requestList.size() + 1), // Auto-ID
+                    type, "Main Branch", "2026-04-11", amount, "Pending"
+            );
+            requestList.add(newReq);
+            requestMessageLabel.setText("Request sent successfully!");
+            budgetamount.clear();
+        } catch (NumberFormatException e) {
+            requestMessageLabel.setText("Invalid Amount!");
+        }
+        saveAllData();
+    }
+
+
+    @FXML public void handleSubmitEvaluationOA(ActionEvent actionEvent) {
+        Employee selectedEmployee = staffTable.getSelectionModel().getSelectedItem();
+        Integer rating = ratingDropdown.getValue();
+        if (selectedEmployee == null) {
+            showAlert("Selection Error", "Please select an employee from the roster table.");
+            return;
+        }
+        if (rating == null) {
+            showAlert("Input Error", "Please select a rating (1-5) from the dropdown.");
+            return;
+        }
+        showAlert("Evaluation Submitted",
+                "Successfully submitted a " + rating + "-star review for " + selectedEmployee.getName() + ".");
+        ratingDropdown.getSelectionModel().clearSelection();
+    }
+
+
+    @FXML public void handleResolveIssueOA(ActionEvent actionEvent) {
+        StoreIssue selectedIssue = issuesTable.getSelectionModel().getSelectedItem();
+        String response = responseInputTextArea.getText();
+
+        if (selectedIssue == null) {
+            showAlert("Selection Error", "Please select an issue from the table.");
+            return;
+        }
+        if (response == null || response.trim().isEmpty()) {
+            showAlert("Input Error", "Please enter a response before resolving the issue.");
+            return;
+        }
+        selectedIssue.setStatus("Resolved");
+        issuesTable.refresh(); // Update the UI
+        responseInputTextArea.clear();
+        showAlert("Success", "Issue " + selectedIssue.getIssueId() + " has been marked as resolved.");
+        saveAllData();
+    }
+
+
+    @FXML public void handleSubmitRestockOA(ActionEvent actionEvent) {
+        InventoryItem selectedItem = lowStockTable.getSelectionModel().getSelectedItem();
+
+        if (selectedItem == null) {
+            showAlert("Selection Error", "Please select an item to restock.");
+            return;
+        }
+        try {
+            int qtyToRestock = Integer.parseInt(restockQtyInput.getText());
+            int updatedQty = selectedItem.getQuantity() + qtyToRestock;
+            selectedItem.setQuantity(updatedQty);
+
+            // Refresh both tables
+            lowStockTable.refresh();
+            inventoryTable.refresh();
+
+            restockQtyInput.clear();
+            estimatedCostLabel.setText("Estimated Cost: $0.00");
+            showAlert("Success", "Stock for " + selectedItem.getItemName() + " has been updated!");
+        } catch (NumberFormatException e) {
+            showAlert("Input Error", "Please enter a valid number.");
+        }
+        saveAllData();
+    }
+
+
+    @FXML public void handleCalculateCostOA(ActionEvent actionEvent) {
+        InventoryItem selectedItem = lowStockTable.getSelectionModel().getSelectedItem();
+
+        if (selectedItem == null) {
+            showAlert("Selection Error", "Please select an item from the Low Stock table first.");
+            return;
+        }
+        try {
+            int qty = Integer.parseInt(restockQtyInput.getText());
+            if (qty <= 0) {
+                showAlert("Input Error", "Please enter a quantity greater than zero.");
                 return;
             }
-            double hoursWorked = Double.parseDouble(hoursWorkedInput.getText());
-            String selectedEmployee = employeeDropdown.getValue();
-
-            attendanceMessageLabel.setText("Success: Logged " + hoursWorked + " hours for " + selectedEmployee + ".");
-            attendanceMessageLabel.setStyle("-fx-text-fill: green;");
-
-            hoursWorkedInput.clear();
-
+            double estimatedCost = qty * 2.50;
+            estimatedCostLabel.setText("Estimated Cost: $" + String.format("%.2f", estimatedCost));
         } catch (NumberFormatException e) {
-            attendanceMessageLabel.setText("Error: Please enter a valid number for hours (e.g., 8.5).");
-            attendanceMessageLabel.setStyle("-fx-text-fill: red;");
+            showAlert("Input Error", "Please enter a valid whole number for the quantity.");
+            estimatedCostLabel.setText("Estimated Cost: $0.00");
         }
-        System.out.println("Save Attendance button clicked!");
-
     }
 
-    @javafx.fxml.FXML
-    public void handleResolveIssueOA(ActionEvent actionEvent) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Issue Resolved");
-        alert.setHeaderText(null);
-        alert.setContentText("The selected issue has been officially marked as resolved and removed from the active tracker.");
-        alert.showAndWait();
 
-        System.out.println("Resolve Issue button clicked!");
+    @FXML public void LogoutOA(ActionEvent actionEvent) {
+        try {
+            javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("Login.fxml"));
+            javafx.scene.Parent root = loader.load();
+            javafx.scene.Scene scene = new javafx.scene.Scene(root);
+            javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) actionEvent.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+            showAlert("Error", "Could not load the login screen.");
+        }
     }
 
-    @javafx.fxml.FXML
-    public void handleSubmitIssueOA(ActionEvent actionEvent) {
-        if (issueTypeDropdown.getValue() == null || issueDatePicker.getValue() == null || issueDescriptionInput.getText().trim().isEmpty()) {
-            issueMessageLabel.setText("Error: Please complete all fields before submitting.");
-            issueMessageLabel.setStyle("-fx-text-fill: red;");
-            return;
+    // ==========================================
+    // BINARY FILE SAVING & LOADING METHODS
+    // ==========================================
+
+    private void saveListToFile(String filename, java.util.ArrayList<?> listToSave) {
+        try (java.io.ObjectOutputStream oos = new java.io.ObjectOutputStream(new java.io.FileOutputStream(filename))) {
+            oos.writeObject(listToSave);
+        } catch (java.io.IOException e) {
+            System.out.println("Error saving to " + filename + ": " + e.getMessage());
+        }
+    }
+
+    private void saveAllData() {
+        // We convert the ObservableLists to ArrayLists because JavaFX lists cannot be saved directly
+        saveListToFile("inventory.bin", new java.util.ArrayList<>(inventoryList));
+        saveListToFile("employees.bin", new java.util.ArrayList<>(employeeList));
+        saveListToFile("issues.bin", new java.util.ArrayList<>(issueList));
+        saveListToFile("requests.bin", new java.util.ArrayList<>(requestList));
+        saveListToFile("expenses.bin", new java.util.ArrayList<>(expenseList));
+    }
+
+    @SuppressWarnings("unchecked")
+    private void loadAllData() {
+        try {
+            java.io.File invFile = new java.io.File("inventory.bin");
+            if (invFile.exists()) {
+                java.io.ObjectInputStream ois = new java.io.ObjectInputStream(new java.io.FileInputStream(invFile));
+                inventoryList.setAll((java.util.ArrayList<InventoryItem>) ois.readObject());
+                ois.close();
+            }
+
+            java.io.File empFile = new java.io.File("employees.bin");
+            if (empFile.exists()) {
+                java.io.ObjectInputStream ois2 = new java.io.ObjectInputStream(new java.io.FileInputStream(empFile));
+                employeeList.setAll((java.util.ArrayList<Employee>) ois2.readObject());
+                ois2.close();
+            }
+
+            java.io.File issueFile = new java.io.File("issues.bin");
+            if (issueFile.exists()) {
+                java.io.ObjectInputStream ois3 = new java.io.ObjectInputStream(new java.io.FileInputStream(issueFile));
+                issueList.setAll((java.util.ArrayList<StoreIssue>) ois3.readObject());
+                ois3.close();
+            }
+
+            java.io.File reqFile = new java.io.File("requests.bin");
+            if (reqFile.exists()) {
+                java.io.ObjectInputStream ois4 = new java.io.ObjectInputStream(new java.io.FileInputStream(reqFile));
+                requestList.setAll((java.util.ArrayList<StoreRequest>) ois4.readObject());
+                ois4.close();
+            }
+
+            java.io.File expFile = new java.io.File("expenses.bin");
+            if (expFile.exists()) {
+                java.io.ObjectInputStream ois5 = new java.io.ObjectInputStream(new java.io.FileInputStream(expFile));
+                expenseList.setAll((java.util.ArrayList<Expense>) ois5.readObject());
+                ois5.close();
+            }
+        } catch (Exception e) {
+            System.out.println("Files not found or corrupted. Using default dummy data.");
         }
 
-        String issueType = issueTypeDropdown.getValue();
 
-        issueMessageLabel.setText("Success: '" + issueType + "' has been logged.");
-        issueMessageLabel.setStyle("-fx-text-fill: green;");
-        issueDescriptionInput.clear();
-
-        System.out.println("Submit Issue button clicked!");
     }
 
-    @javafx.fxml.FXML
-    public void handleViewPerformanceOA(ActionEvent actionEvent) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Staff Performance Report");
-        alert.setHeaderText("Performance Data Loaded");
-        alert.setContentText("The employee metrics have been successfully retrieved. (This will link to the TableView later!)");
-        alert.showAndWait();
 
-        System.out.println("View Performance button clicked!");    }
-
-    @javafx.fxml.FXML
-    public void handleSendRequestOA(ActionEvent actionEvent) {
-        if (requestTypeDropdown.getValue() == null || requestDetailsInput.getText().trim().isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Missing Information");
-            alert.setHeaderText(null);
-            alert.setContentText("Please select a request type and provide the justification details.");
-            alert.showAndWait();
-            return;
-        }
-
-        String requestType = requestTypeDropdown.getValue();
-
-        Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-        successAlert.setTitle("Request Sent");
-        successAlert.setHeaderText("Status: Delivered");
-        successAlert.setContentText("Your '" + requestType + "' request has been successfully forwarded to the Regional Manager for review.");
-        successAlert.showAndWait();
-
-        requestDetailsInput.clear();
-
-        System.out.println("Send Request button clicked!");
-    }
 }

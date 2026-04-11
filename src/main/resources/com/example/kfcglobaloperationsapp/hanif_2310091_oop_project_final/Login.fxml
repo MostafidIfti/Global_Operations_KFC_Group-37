@@ -8,8 +8,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #62A393;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hanif_2310091_oop_project_final.LoginController">
-   <children>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #62A393;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kfcglobaloperationsapp.hanif_2310091_oop_project_final.LoginController">
+    <children>
       <Label layoutX="169.0" layoutY="14.0" prefHeight="39.0" prefWidth="262.0" text="KFC Global Operations - Login">
          <font>
             <Font name="System Bold" size="18.0" />

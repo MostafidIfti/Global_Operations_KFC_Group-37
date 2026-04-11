@@ -10,11 +10,12 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Ifti_2310321_FXML_FIles/Supply_Chain-Fxml_works/InventoryDashboard.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        // Change the path to point to Login.fxml
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/kfcglobaloperationsapp/hanif_2310091_oop_project_final/Login.fxml"));
+
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("KFC Global Operations - Login"); // Updated Title
         stage.setScene(scene);
         stage.show();
-
     }
 }
