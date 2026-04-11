@@ -59,8 +59,14 @@ public class LoginController {
                         fxmlPath = "/com/example/kfcglobaloperationsapp/Ifti_2310321_FXML_FIles/Finance-Fxml_works/FinanceMasterMenu.fxml";
                         break;
                     case "Supply Chain Manager":
-    fxmlPath = "/com/example/kfcglobaloperationsapp/Ifti_2310321_FXML_FIles/Supply_Chain-Fxml_works/SupplyChainMasterMenu.fxml";
-    break;
+                        fxmlPath = "/com/example/kfcglobaloperationsapp/Ifti_2310321_FXML_FIles/Supply_Chain-Fxml_works/SupplyChainMasterMenu.fxml";
+                        break;
+                    case "Cashier":
+                        fxmlPath = "/com/kfcglobaloperationsapp/Uzair_2521139_Fxml_Files/Cashier_Fxml_Files/cashierDashboard.fxml";
+                        break;
+                    case "Kitchen Supervisor":
+                        fxmlPath = "/com/kfcglobaloperationsapp/Uzair_2521139_Fxml_Files/KitchenSupervisor--fxml_files/kitchenSupervisorDashboard.fxml";
+                        break;
                     default:
                         // For Hanif and Uzair's roles, we will add their file paths later!
                         errorLabel.setText("Dashboard not linked yet for: " + loggedInUser.getRole());

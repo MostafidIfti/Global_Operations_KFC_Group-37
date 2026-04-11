@@ -1,6 +1,6 @@
 package com.example.kfcglobaloperationsapp.Uzair_2521139.Model;
 
-public class User {
+public abstract class  User {
 
     protected int userID;
     protected String name, userName, passwd, role;

@@ -17,8 +17,8 @@ public class SetupUsers {
         userList.add(new User("ifti_finance", "123", "Finance Manager"));
 
         // 3. Uzair Ahmed Khan's Users
-        userList.add(new User("uzair_cashier", "123", "Cashier"));
-        userList.add(new User("uzair_kitchen", "123", "Kitchen Supervisor"));
+        userList.add(new User("uzairC", "123", "Cashier"));
+        userList.add(new User("uzairK", "123", "Kitchen Supervisor"));
 
         // Saving them to the users.bin file
         try {

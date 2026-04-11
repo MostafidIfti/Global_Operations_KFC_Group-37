@@ -1,6 +1,5 @@
-package com.example.kfcglobaloperationsapp;
+package com.example.kfcglobaloperationsapp.Uzair_2521139;
 
-import com.example.kfcglobaloperationsapp.Uzair_2521139.Database;
 import com.example.kfcglobaloperationsapp.Uzair_2521139.Model.Cashier;
 import com.example.kfcglobaloperationsapp.Uzair_2521139.Model.KitchenSupervisor;
 import com.example.kfcglobaloperationsapp.Uzair_2521139.Model.User;
