@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kfcglobaloperationsapp.IFTI_2310321.Finance_Manager.FinancialAuditController">
+   <children>
+      <Label layoutX="320.0" layoutY="20.0" text="Financial Audit Module">
+         <font><Font name="System Bold" size="16.0" /></font>
+      </Label>
+
+      <Button layoutX="20.0" layoutY="18.0" onAction="#returnToDashboardOnClick" text="&lt; Back" />
+
+      <TableView fx:id="auditTableView" layoutX="20.0" layoutY="70.0" prefHeight="250.0" prefWidth="760.0">
+        <columns>
+          <TableColumn fx:id="idCol" prefWidth="120.0" text="Txn ID" />
+          <TableColumn fx:id="typeCol" prefWidth="180.0" text="Type" />
+          <TableColumn fx:id="amountCol" prefWidth="150.0" text="Amount ($)" />
+          <TableColumn fx:id="dateCol" prefWidth="150.0" text="Date" />
+          <TableColumn fx:id="statusCol" prefWidth="150.0" text="Status" />
+        </columns>
+      </TableView>
+
+      <Button layoutX="20.0" layoutY="335.0" onAction="#viewTxnDetailsOnClick" text="View Selection Details" />
+      <Button layoutX="170.0" layoutY="335.0" onAction="#flagSuspiciousOnClick" style="-fx-background-color: #ff4444;" text="Flag as Suspicious" textFill="WHITE" />
+
+      <Label layoutX="20.0" layoutY="380.0" text="Transaction Breakdown:">
+         <font><Font name="System Bold" size="13.0" /></font>
+      </Label>
+      <Label fx:id="detailsLabel" alignment="TOP_LEFT" layoutX="20.0" layoutY="400.0" prefHeight="50.0" prefWidth="400.0" text="No selection..." textFill="#0015ff" />
+
+      <Label layoutX="450.0" layoutY="380.0" text="Audit Notes &amp; Observations:" />
+      <TextArea fx:id="auditNotesTextArea" layoutX="450.0" layoutY="400.0" prefHeight="80.0" prefWidth="330.0" promptText="Enter audit findings..." />
+
+      <Button layoutX="670.0" layoutY="490.0" onAction="#saveAuditReportOnClick" prefHeight="30.0" prefWidth="110.0" style="-fx-background-color: lightgreen;" text="Save Audit" />
+
+      <Label fx:id="systemOutputLabel" alignment="CENTER" layoutX="20.0" layoutY="540.0" prefWidth="760.0" text="System Status: Ready" textFill="RED">
+         <font><Font name="System Bold" size="14.0" /></font>
+      </Label>
+   </children>
+</AnchorPane>

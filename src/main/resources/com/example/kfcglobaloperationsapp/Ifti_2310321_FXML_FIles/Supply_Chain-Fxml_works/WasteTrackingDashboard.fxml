@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="581.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kfcglobaloperationsapp.IFTI_2310321.WasteTrackingController">
+   <children>
+      <Label layoutX="320.0" layoutY="30.0" text="Waste and Spoilage Tracking" />
+
+      <Label layoutX="50.0" layoutY="80.0" text="Select Item:" />
+      <ComboBox fx:id="itemComboBox" layoutX="130.0" layoutY="76.0" prefWidth="150.0" />
+
+      <Label layoutX="310.0" layoutY="80.0" text="Quantity:" />
+      <TextField fx:id="quantityTextField" layoutX="370.0" layoutY="76.0" prefWidth="100.0" />
+
+      <Label layoutX="500.0" layoutY="80.0" text="Reason:" />
+      <ComboBox fx:id="reasonComboBox" layoutX="560.0" layoutY="76.0" prefWidth="150.0" />
+
+      <Button layoutX="330.0" layoutY="130.0" mnemonicParsing="false" onAction="#handleLogWaste" text="Record Waste Entry" />
+
+      <TableView fx:id="wasteTableView" layoutX="50.0" layoutY="180.0" prefHeight="360.0" prefWidth="670.0">
+        <columns>
+          <TableColumn fx:id="logIdCol" prefWidth="100.0" text="Log ID" />
+          <TableColumn fx:id="itemCol" prefWidth="200.0" text="Item Name" />
+          <TableColumn fx:id="qtyCol" prefWidth="120.0" text="Quantity Lost" />
+          <TableColumn fx:id="reasonCol" prefWidth="240.0" text="Reason for Waste" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

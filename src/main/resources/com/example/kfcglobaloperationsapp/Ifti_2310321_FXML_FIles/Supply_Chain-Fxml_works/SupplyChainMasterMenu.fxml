@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="581.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kfcglobaloperationsapp.IFTI_2310321.SupplyChainMasterController">
+   <children>
+      <Label layoutX="300.0" layoutY="50.0" text="Supply Chain Manager Master Menu" />
+
+      <VBox layoutX="250.0" layoutY="120.0" prefHeight="300.0" prefWidth="250.0" spacing="20.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#openGoal1" prefWidth="250.0" text="Goal 1: Place Supplier Order" />
+            <Button mnemonicParsing="false" onAction="#openGoal2" prefWidth="250.0" text="Goal 2: Track Inventory Levels" />
+            <Button mnemonicParsing="false" onAction="#openGoal3" prefWidth="250.0" text="Goal 3: Manage Suppliers" />
+            <Button mnemonicParsing="false" onAction="#openGoal4" prefWidth="250.0" text="Goal 4: Track Shipments" />
+             <Button mnemonicParsing="false" onAction="#openGoal5" prefWidth="250.0" text="Goal 5: Transfer Stock" />
+            <Button mnemonicParsing="false" onAction="#openGoal6" prefWidth="250.0" text="Goal 6: Forecast Demand" />
+            <Button mnemonicParsing="false" onAction="#openGoal7" prefWidth="250.0" text="Goal 7: Log Waste &amp; Spoilage" />
+            <Button mnemonicParsing="false" onAction="#openGoal8" prefWidth="250.0" text="Goal 8: Evaluate Suppliers" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
