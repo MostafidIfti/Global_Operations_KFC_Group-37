@@ -8,6 +8,31 @@ import java.util.List;
 
 public class Database {
 
+
+    public static ArrayList<User> usersLoginInfo = new ArrayList<>(
+            List.of(
+                    new Cashier(
+                            1, "Binod", "binod", "123", "Cashier"
+                    ),
+                    new Cashier(
+                            2, "Champa", "champa", "123", "Cashier"
+                    ),
+                    new Cashier(
+                            3, "Trump", "trump", "123", "Cashier"
+                    ) ,
+                     new KitchenSupervisor(
+                            4, "Hasina", "hasina", "123", "KitchenSupervisor"
+    ),
+                    new KitchenSupervisor(
+                            5, "Putin", "putin", "123", "KitchenSupervisor"
+    ),
+                    new KitchenSupervisor(
+                            6, "Yunus", "yunusSorkar", "123", "KitchenSupervisor"
+    )
+            )
+    );
+
+
     public static Cashier currentCashier = new Cashier(
             2521139, "Uzair"
     );
@@ -35,6 +60,27 @@ public class Database {
     public static ArrayList<Order> paidOrders = new ArrayList<>();
 
 
+    static {
+        Order ord = new Order(
+                1000,
+                Database.currentSession,
+                "Paid"
+        );
+
+        ArrayList<OrderItem> orderItemLsit = new ArrayList<>();
+        orderItemLsit.add(new OrderItem(
+                menuItems.get(0).getMenuItemID(), 2, ord, menuItems.get(0)
+        ));
+        orderItemLsit.add(new OrderItem(
+                menuItems.get(1).getMenuItemID(), 1, ord, menuItems.get(1)
+        ));
+
+        ord.setOrderItemsList(orderItemLsit);
+        ord.setOrderType("Dine-in");
+        ord.setStatus("In-Queue");
+        paidOrders.add(ord);
+    }
+
 
     public static KitchenSupervisor currentKitchenSupervisor = new KitchenSupervisor(
             2521139, "Uzair"
@@ -61,5 +107,13 @@ public class Database {
     );
 
     public static ArrayList<Staff> assignedStaff = new ArrayList<>();
+
+    public static ArrayList<Coupon> coupons = new ArrayList<>(
+            List.of(
+                    new Coupon("KFC101", 15d, true
+                    ),
+                    new Coupon("KFC100", 10d, true)
+            )
+    );
 
 }

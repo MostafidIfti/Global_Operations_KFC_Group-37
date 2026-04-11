@@ -97,6 +97,10 @@ public class OrderItemController {
     @javafx.fxml.FXML
     public void onActionDecrementQuantity(ActionEvent actionEvent) {
         if (orderItem.getQuantity() <= 1) {
+            Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+            confirm.setTitle("Remove Item");
+            confirm.setContentText("Remove " + orderItem.getMenuItem().getName() + " from order?");
+            confirm.showAndWait();
             return;
         }
 

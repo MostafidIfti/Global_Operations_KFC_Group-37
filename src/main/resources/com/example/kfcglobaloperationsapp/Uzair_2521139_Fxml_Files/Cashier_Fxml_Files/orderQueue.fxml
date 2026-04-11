@@ -22,5 +22,6 @@
       <Label layoutX="31.0" layoutY="370.0" text="Order ID" />
       <Button layoutX="201.0" layoutY="388.0" mnemonicParsing="false" onAction="#onActionSearchOrderID" text="Search" />
       <Button layoutX="141.0" layoutY="23.0" mnemonicParsing="false" onAction="#onActionRefresh" prefHeight="26.0" prefWidth="78.0" text="Refresh" />
+       <Button layoutX="309.0" layoutY="388.0" mnemonicParsing="false" onAction="#onActionMarkAsServed" prefHeight="26.0" prefWidth="150.0" text="Mark as Served" />
    </children>
 </AnchorPane>

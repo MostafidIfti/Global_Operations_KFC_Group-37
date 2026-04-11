@@ -6,4 +6,8 @@ public class Cashier extends User {
         super(id, name);
     }
 
+    public Cashier(int userID, String name, String userName, String passwd, String role) {
+        super(userID, name, userName, passwd, role);
+    }
+
 }
