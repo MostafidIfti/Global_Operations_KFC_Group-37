@@ -62,4 +62,12 @@ public class Database {
 
     public static ArrayList<Staff> assignedStaff = new ArrayList<>();
 
+    public static ArrayList<Coupon> coupons = new ArrayList<>(
+            List.of(
+                    new Coupon("KFC101", 15d, true
+                    ),
+                    new Coupon("KFC100", 10d, true)
+            )
+    );
+
 }

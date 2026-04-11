@@ -24,6 +24,28 @@ public class RequestConsumablesController {
     @javafx.fxml.FXML
     public void onActionGenerateTicketSendManager(ActionEvent actionEvent) {
         int qty = Integer.parseInt(requestKitchenQuantity.getText());
+        String selectedItem = requestKitchenComboBox.getValue();
+        String qtyText = requestKitchenQuantity.getText();
+        if (selectedItem == null || selectedItem.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Select a consumable item first");
+            alert.showAndWait();
+            return;
+        }
+
+        if (qtyText.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Enter a quantity");
+            alert.showAndWait();
+            return;
+        }
+
+//        try {
+//
+//        } catch (Exception e) {
+//
+//        }
+
         ConsumableRequest request = new ConsumableRequest(
                 (int) (Math.random() * 1000),
                 qty,
@@ -33,7 +55,7 @@ public class RequestConsumablesController {
 
         Database.consumableRequests.add(request);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("TICKET SUBMITTED");
+        alert.setContentText("Request Submitted Item: " + requestKitchenComboBox.getValue() + "  Qty: " + qty);
         alert.showAndWait();
     }
 }

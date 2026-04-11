@@ -1,6 +1,7 @@
 package com.example.kfcglobaloperationsapp.Uzair_2521139.Cashier.Controllers;
 
 import com.example.kfcglobaloperationsapp.Uzair_2521139.Database;
+import com.example.kfcglobaloperationsapp.Uzair_2521139.Model.Coupon;
 import com.example.kfcglobaloperationsapp.Uzair_2521139.Model.MenuItem;
 import com.example.kfcglobaloperationsapp.Uzair_2521139.Model.Order;
 import com.example.kfcglobaloperationsapp.Uzair_2521139.Model.OrderItem;
@@ -208,7 +209,45 @@ public class CreateNewOrderController {
         }
     }
 
+    public void removeOrderItem(OrderItem orderItem) {
+
+    }
+
+
     @FXML
+    public void onActionApplyCoupon(ActionEvent actionEvent) {
+        String code = couponCodeTextField.getText();
+
+        if (Database.currentOrder.getDiscountAmount() > 0d) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Coupon Already applied!");
+            alert.showAndWait();
+            return;
+        }
+        for (Coupon coupon: Database.coupons) {
+            if (code.equals(coupon.getCouponCode())) {
+                double discount = Database.currentOrder.getSubtotal() * (coupon.getDiscountPercent() / 100d);
+                Database.currentOrder.setDiscountAmount(discount);
+
+                double newGrandTotal = Database.currentOrder.getSubtotal()
+                        + Database.currentOrder.getTax()
+                        - discount;
+                Database.currentOrder.setGrandTotal(newGrandTotal);
+
+                discountSummaryLabel.setText("Discount: -" + discount);
+                TotalSummaryLabel.setText("Grand Total: " + newGrandTotal);
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Coupon applied! " + coupon.getDiscountPercent() + "% off");
+                alert.showAndWait();
+
+            }
+        }
+
+    }
+
+
+    @Deprecated
     public void onMouseClickUpdateUI(Event event) {
     }
 }

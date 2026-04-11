@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.kfcglobaloperationsapp.Uzair_2521139.Cashier.Controllers.GenerateShiftSummaryController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kfcglobaloperationsapp.Uzair_2521139.Cashier.Controllers.GenerateShiftSummaryController">
+    <children>
+        <Label layoutX="30.0" layoutY="20.0" text="Shift Summary Report">
+        </Label>
+        <Label fx:id="sessionIdLabel" layoutX="30.0" layoutY="65.0" text="Session ID: " />
+        <Label fx:id="cashierNameLabel" layoutX="30.0" layoutY="95.0" text="Cashier: " />
+        <Label fx:id="openingCashLabel" layoutX="30.0" layoutY="135.0" text="Opening Cash: " />
+        <Label fx:id="closingCashLabel" layoutX="30.0" layoutY="160.0" text="Closing Cash: " />
+        <Label fx:id="totalOrdersLabel" layoutX="30.0" layoutY="200.0" text="Total Orders: " />
+        <Label fx:id="totalRevenueLabel" layoutX="30.0" layoutY="225.0" text="Total Revenue: " />
+        <Label fx:id="cashCollectedLabel" layoutX="30.0" layoutY="250.0" text="Cash Sales: " />
+        <Label fx:id="cardCollectedLabel" layoutX="30.0" layoutY="275.0" text="Card Sales: " />
+        <Label fx:id="totalDiscountsLabel" layoutX="30.0" layoutY="300.0" text="Discounts: " />
+        <Label fx:id="netCashLabel" layoutX="30.0" layoutY="330.0" text="Net Cash: " />
+      <Button layoutX="205.0" layoutY="16.0" mnemonicParsing="false" onAction="#onActionGenerateReport" text="Generate Shift Report" />
+    </children>
 </AnchorPane>
