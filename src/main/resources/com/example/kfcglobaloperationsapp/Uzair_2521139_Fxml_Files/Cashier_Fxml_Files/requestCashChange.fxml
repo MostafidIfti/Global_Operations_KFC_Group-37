@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kfcglobaloperationsapp.Uzair_2521139.RequestCashChangeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kfcglobaloperationsapp.Uzair_2521139.Cashier.Controllers.RequestCashChangeController">
    <children>
       <Label layoutX="36.0" layoutY="45.0" text="Request Cash Refill" />
       <Button layoutX="36.0" layoutY="254.0" mnemonicParsing="false" onAction="#onActionSubmitRefillRequest" text="Submit Request To Manager" />

@@ -1,5 +1,8 @@
 package com.example.kfcglobaloperationsapp.Uzair_2521139;
 
+import com.example.kfcglobaloperationsapp.Uzair_2521139.Model.*;
+
+import javax.print.attribute.standard.OrientationRequested;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +12,7 @@ public class Database {
             2521139, "Uzair"
     );
     public static CashierSession currentSession;
+
     public static ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>(List.of(
         new MenuItem(1, "18 pcs Crispy Chicken", "Chicken", 1799, true),
         new MenuItem(2, "10 pcs Crispy Chicken", "Chicken", 1249, true),
@@ -21,9 +25,18 @@ public class Database {
         new MenuItem(9, "Spicy Zinger Burger with Cheese", "Burger", 499, true)
     ));
     public static ArrayList<Order> orderList = new ArrayList<Order>();
+
     public static int orderCount = 1;
+
     public static Order currentOrder;
 
     public static ArrayList<RefillRequest> refillRequestsList = new ArrayList<RefillRequest>();
 
+    public static ArrayList<Order> paidOrders = new ArrayList<>();
+
+
+    static {
+
+
+    }
 }

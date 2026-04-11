@@ -1,4 +1,4 @@
-package com.example.kfcglobaloperationsapp.Uzair_2521139;
+package com.example.kfcglobaloperationsapp.Uzair_2521139.Model;
 
 public class RefillRequest {
     private int refillId;

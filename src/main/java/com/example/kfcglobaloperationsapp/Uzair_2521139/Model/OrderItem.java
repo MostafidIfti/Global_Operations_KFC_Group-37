@@ -1,4 +1,4 @@
-package com.example.kfcglobaloperationsapp.Uzair_2521139;
+package com.example.kfcglobaloperationsapp.Uzair_2521139.Model;
 
 public class OrderItem {
 
@@ -43,6 +43,14 @@ public class OrderItem {
         return menuItem;
     }
 
+    public String getMenuItemName() {
+        return this.menuItem.getName();
+    }
+
+    public double getMenuItemPrice() {
+        return this.menuItem.getPrice();
+    }
+
     public void setMenuItem(MenuItem menuItem) {
         this.menuItem = menuItem;
     }
@@ -65,5 +73,10 @@ public class OrderItem {
 
     public void calculateSubtotal(){
         this.itemSubtotal = this.quantity * this.menuItem.getPrice();
+    }
+
+    @Override
+    public String toString() {
+        return (menuItem.getName() + " : " + quantity);
     }
 }

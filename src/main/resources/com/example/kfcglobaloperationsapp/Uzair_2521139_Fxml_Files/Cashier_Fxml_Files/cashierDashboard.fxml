@@ -7,37 +7,38 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="695.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kfcglobaloperationsapp.Uzair_2521139.CashierDashboardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="695.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kfcglobaloperationsapp.Uzair_2521139.Cashier.Controllers.CashierDashboardController">
    <center>
-      <TabPane fx:id="cashierTab" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-        <tabs>
-          <Tab fx:id="createNewSessionTab" closable="false" text="Manage Session">
-               <content>
-                   <fx:include source="startSession.fxml" />
-               </content>
-          </Tab>
-            <Tab disable="true" text="Create New Order">
-               <content>
-                   <fx:include source="createNewOrder.fxml" />
-               </content>
-            </Tab>
-            <Tab disable="true" text="In-store Orders">
-               <content>
-                   <fx:include source="inStoreOrders.fxml" />
-               </content>
-            </Tab>
-            <Tab disable="true" text="Request Cash Refill">
-               <content>
-                   <fx:include source="requestCashChange.fxml" />
-               </content>
-            </Tab>
-            <Tab disable="true" text="Generate Shift Summary">
-               <content>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-               </content>
-            </Tab>
-        </tabs>
-      </TabPane>
+       <TabPane fx:id="cashierTab" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+           <tabs>
+               <Tab fx:id="createNewSessionTab" closable="false" text="Manage Session">
+                   <content>
+                       <fx:include source="startSession.fxml"/>
+                   </content>
+               </Tab>
+               <Tab id="createNewOrder" fx:id="createNewOrderTab" disable="true" text="Create New Order">
+                   <content>
+                       <fx:include source="createNewOrder.fxml"/>
+                   </content>
+               </Tab>
+               <Tab fx:id="orderQueueTab" disable="true" text="Order Queue">
+                   <content>
+                       <fx:include source="orderQueue.fxml"/>
+                   </content>
+               </Tab>
+               <Tab fx:id="refillRequestTab" disable="true" text="Request Cash Refill">
+                   <content>
+                       <fx:include source="requestCashChange.fxml"/>
+                   </content>
+               </Tab>
+               <Tab id="generateShiftSummary" fx:id="generateShiftSummaryTab" disable="true"
+                    text="Generate Shift Summary">
+                   <content>
+                       <AnchorPane prefHeight="200.0" prefWidth="200.0"/>
+                   </content>
+               </Tab>
+           </tabs>
+       </TabPane>
    </center>
    <top>
       <AnchorPane fx:id="cashierAnchorPane" prefHeight="66.0" prefWidth="947.0" BorderPane.alignment="CENTER">

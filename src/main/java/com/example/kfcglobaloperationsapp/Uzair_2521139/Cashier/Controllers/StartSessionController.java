@@ -1,5 +1,7 @@
-package com.example.kfcglobaloperationsapp.Uzair_2521139;
+package com.example.kfcglobaloperationsapp.Uzair_2521139.Cashier.Controllers;
 
+import com.example.kfcglobaloperationsapp.Uzair_2521139.Database;
+import com.example.kfcglobaloperationsapp.Uzair_2521139.Model.CashierSession;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,10 +28,12 @@ public class StartSessionController {
     public void onActionStartSession(ActionEvent actionEvent) throws IOException {
 
         double openingCashAmount = Double.parseDouble(openingCashAmountTextField.getText());
-        if (openingCashAmount < 0) {
+
+        if (openingCashAmount < 10000) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setContentText("Amount Must Be Non-negative");
+            alert.setContentText("Amount Must Be More Than 10k BDT");
             alert.showAndWait();
+            return;
         }
 
         Database.currentSession = new CashierSession(
@@ -43,9 +47,9 @@ public class StartSessionController {
 
         ObservableList<Tab> tabList = ((TabPane) cashierScene.lookup("#cashierTab")).getTabs();
 
-        //Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        //alert.setContentText("Session Created");
-        //alert.showAndWait();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Session Created");
+        alert.showAndWait();
 
         FXMLLoader fxml = new FXMLLoader(getClass().getResource("/com/example/kfcglobaloperationsapp/Uzair_2521139_Fxml_Files/Cashier_Fxml_Files/endSession.fxml"));
         for (Tab elem : tabList) {
