@@ -16,9 +16,6 @@ module com.example.kfcglobaloperationsapp {
     exports com.example.kfcglobaloperationsapp.IFTI_2310321.Finance_Manager;
     opens com.example.kfcglobaloperationsapp.IFTI_2310321.Finance_Manager to javafx.fxml;
 
-
-
-
     // Uzair Custom Folder
     opens com.example.kfcglobaloperationsapp.Uzair_2521139 to javafx.fxml;
     exports com.example.kfcglobaloperationsapp.Uzair_2521139;
