@@ -12,9 +12,9 @@ module com.example.kfcglobaloperationsapp {
     // IFTI Supply Chain Folder
     exports com.example.kfcglobaloperationsapp.IFTI_2310321;
     opens com.example.kfcglobaloperationsapp.IFTI_2310321 to javafx.fxml;
+    exports com.example.kfcglobaloperationsapp.IFTI_2310321.Finance_Manager;
+    opens com.example.kfcglobaloperationsapp.IFTI_2310321.Finance_Manager to javafx.fxml;
 
-    opens com.example.kfcglobaloperationsapp.IFTI_2310321.finance_manager to javafx.fxml;
-    exports com.example.kfcglobaloperationsapp.IFTI_2310321.finance_manager;
 
 
 
