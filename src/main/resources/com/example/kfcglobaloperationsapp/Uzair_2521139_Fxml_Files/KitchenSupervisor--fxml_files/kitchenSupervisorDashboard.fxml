@@ -1,14 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="887.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kfcglobaloperationsapp.Uzair_2521139.KitchenSupervisor.Controllers.KitchenSupervisorDashboardController">
+   <center>
+      <TabPane fx:id="kitchenTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab id="incomingOrdersTab" fx:id="incomingOrdersTab" text="Incoming Orders">
+               <content>
+                  <fx:include source="incomingOrders.fxml"/>
+               </content>
+          </Tab>
+            <Tab id="ingredientManagementTab" fx:id="ingredientManagementTab" text="Ingredient Management">
+               <content>
+                   <fx:include source="ingredientManagement.fxml"/>
+               </content>
+            </Tab>
+            <Tab id="requestConsumablesTab" fx:id="requestConsumablesTab" text="Request Consumables">
+               <content>
+                  <fx:include source="requestKitchenConsumables.fxml"/>
+               </content>
+            </Tab>
+            <Tab id="recordStaffAssignmentTab" fx:id="recordStaffAssignmentTab" text="Record Staff Assignments">
+               <content>
+                   <fx:include source="recordStaffAssignments.fxml"/>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+   <top>
+      <AnchorPane prefHeight="60.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="welcomeTextLabel" layoutX="30.0" layoutY="23.0" text="Welcome, Supervisor Name" />
+            <Label fx:id="kitchenSupervisorID" layoutX="350.0" layoutY="23.0" text="Kitchen Supervisor ID" />
+            <Button fx:id="logOutButton" layoutX="797.0" layoutY="19.0" mnemonicParsing="false" onAction="#onActionLogOut" text="Log Out" />
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>

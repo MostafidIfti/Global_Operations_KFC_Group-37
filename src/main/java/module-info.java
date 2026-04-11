@@ -5,6 +5,7 @@ module com.example.kfcglobaloperationsapp {
     requires javafx.graphics;
     requires javafx.base;
     requires java.desktop;
+    //requires com.example.kfcglobaloperationsapp;
 
     opens com.example.kfcglobaloperationsapp to javafx.fxml;
     exports com.example.kfcglobaloperationsapp;
@@ -22,4 +23,6 @@ module com.example.kfcglobaloperationsapp {
     opens com.example.kfcglobaloperationsapp.Uzair_2521139.Model to javafx.fxml;
     exports com.example.kfcglobaloperationsapp.Uzair_2521139.Cashier.Controllers;
     opens com.example.kfcglobaloperationsapp.Uzair_2521139.Cashier.Controllers to javafx.fxml;
+    exports com.example.kfcglobaloperationsapp.Uzair_2521139.KitchenSupervisor.Controllers;
+    opens com.example.kfcglobaloperationsapp.Uzair_2521139.KitchenSupervisor.Controllers to javafx.fxml;
 }

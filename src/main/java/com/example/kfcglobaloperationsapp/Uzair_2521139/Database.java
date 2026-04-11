@@ -35,8 +35,31 @@ public class Database {
     public static ArrayList<Order> paidOrders = new ArrayList<>();
 
 
-    static {
 
+    public static KitchenSupervisor currentKitchenSupervisor = new KitchenSupervisor(
+            2521139, "Uzair"
+    );
 
-    }
+    public static ArrayList<ConsumableRequest> consumableRequests = new ArrayList<>();
+
+    public static ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>(List.of(
+            new Ingredient(1, "Chicken Thighs", "pcs", 50, 5),
+            new Ingredient(2, "Lettuce", "heads", 20, 5),
+            new Ingredient(3, "Buns", "pcs", 30, 3),
+            new Ingredient(4, "Potatoes", "pcs", 100, 10),
+            new Ingredient(5, "Secret Sauce", "litres", 10, 1),
+            new Ingredient(6, "Mysterious White Sauce", "litres", 5, 1)
+    ));
+
+    public static ArrayList<Staff> staffList = new ArrayList<>(
+            List.of(
+                    new Staff((int)(Math.random()*1000), "Kuddus"),
+                    new Staff((int)(Math.random()*1000), "Kajol"),
+                    new Staff((int)(Math.random()*1000), "Rupa"),
+                    new Staff((int)(Math.random()*1000), "Gopi")
+            )
+    );
+
+    public static ArrayList<Staff> assignedStaff = new ArrayList<>();
+
 }
