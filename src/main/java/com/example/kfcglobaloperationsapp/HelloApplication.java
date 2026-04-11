@@ -8,11 +8,20 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
-   @Override
+    @Override
     public void start(Stage stage) throws IOException {
-FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/kfcglobaloperationsapp/Ifti_2310321_FXML_FIles/Finance-Fxml_works/FinanceMasterMenu.fxml"));        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Finance Master Menu");
+
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Login.fxml"));
+
+        Scene scene = new Scene(fxmlLoader.load());
+
+        stage.setTitle("KFC Global - Employee Login");
+
         stage.setScene(scene);
         stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch();
     }
 }
