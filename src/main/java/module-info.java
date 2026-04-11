@@ -6,6 +6,7 @@ module com.example.kfcglobaloperationsapp {
     requires javafx.base;
     requires java.desktop;
     //requires com.example.kfcglobaloperationsapp;
+    //requires com.example.kfcglobaloperationsapp;
 
     opens com.example.kfcglobaloperationsapp to javafx.fxml;
     exports com.example.kfcglobaloperationsapp;

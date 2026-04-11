@@ -48,7 +48,7 @@ public class GenerateShiftSummaryController {
             totalRevenue = totalRevenue + order.getGrandTotal();
             totalDiscounts = totalDiscounts + order.getDiscountAmount();
 
-            Payment payment = order.getPayement();
+            Payment payment = order.getPayment();
             if ("Cash".equals(payment.getPaymentMethod())) {
                 cash = cash + order.getGrandTotal();
             } else if ("Card".equals(payment.getPaymentMethod())) {

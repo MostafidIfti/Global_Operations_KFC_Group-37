@@ -49,7 +49,6 @@ public class CreateNewOrderController {
         orderTypeComboBox.setValue("Dine-In");
         Database.currentOrder = new Order(
                 Database.orderCount,
-                Database.currentCashier,
                 Database.currentSession,
                 "Pending",
                 "Dine-In",

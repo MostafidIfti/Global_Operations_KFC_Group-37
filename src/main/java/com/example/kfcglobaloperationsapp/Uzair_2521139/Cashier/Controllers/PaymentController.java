@@ -1,7 +1,6 @@
 package com.example.kfcglobaloperationsapp.Uzair_2521139.Cashier.Controllers;
 
 import com.example.kfcglobaloperationsapp.Uzair_2521139.Database;
-import com.example.kfcglobaloperationsapp.Uzair_2521139.Model.Order;
 import com.example.kfcglobaloperationsapp.Uzair_2521139.Model.OrderItem;
 import com.example.kfcglobaloperationsapp.Uzair_2521139.Model.Payment;
 import javafx.collections.ObservableList;
@@ -13,7 +12,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
-import java.util.concurrent.atomic.DoubleAccumulator;
 
 public class PaymentController {
     @javafx.fxml.FXML
@@ -51,7 +49,7 @@ public class PaymentController {
                 Database.currentOrder
         );
 
-        Database.currentOrder.setPayement(payment);
+        Database.currentOrder.setPayment(payment);
 
         paymentTableItemTC.setCellValueFactory(new PropertyValueFactory<>("menuItemName"));
         paymentTableQtyTC.setCellValueFactory(new PropertyValueFactory<>("quantity"));
@@ -72,7 +70,7 @@ public class PaymentController {
     @javafx.fxml.FXML
     public void onActionConfirmPayment(ActionEvent actionEvent) throws IOException {
 
-        if ((Database.currentOrder.getPayement().getChangeAmount() == null)) {
+        if ((Database.currentOrder.getPayment().getChangeAmount() == null)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Calculate Change Amount Before Confirming");
             alert.showAndWait();
@@ -119,14 +117,14 @@ public class PaymentController {
         }
         changeAmountLabel.setText("Change Amount: " + String.valueOf(change));
         backBtn.setDisable(true);
-        Database.currentOrder.getPayement().setAmountPaid(amount);
-        Database.currentOrder.getPayement().setChangeAmount(change);
+        Database.currentOrder.getPayment().setAmountPaid(amount);
+        Database.currentOrder.getPayment().setChangeAmount(change);
     }
 
     @javafx.fxml.FXML
     public void onActionCard(ActionEvent actionEvent) {
         if (cardRb.isSelected()) {
-            Database.currentOrder.getPayement().setPaymentMethod("Card");
+            Database.currentOrder.getPayment().setPaymentMethod("Card");
         }
         amountGivenTextField.setDisable(true);
     }
@@ -134,7 +132,7 @@ public class PaymentController {
     @javafx.fxml.FXML
     public void onActionCash(ActionEvent actionEvent) {
         if (cashRb.isSelected()){
-            Database.currentOrder.getPayement().setPaymentMethod("Cash");
+            Database.currentOrder.getPayment().setPaymentMethod("Cash");
             amountGivenTextField.setDisable(false);
         }
     }

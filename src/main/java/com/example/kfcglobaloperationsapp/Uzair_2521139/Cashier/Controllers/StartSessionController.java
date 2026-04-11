@@ -26,6 +26,14 @@ public class StartSessionController {
 
     @FXML
     public void onActionStartSession(ActionEvent actionEvent) throws IOException {
+        String cashAmountText = openingCashAmountTextField.getText();
+
+        if (cashAmountText.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Please enter the opening cash amount before creating new session");
+            alert.showAndWait();
+            return;
+        }
 
         double openingCashAmount = Double.parseDouble(openingCashAmountTextField.getText());
 

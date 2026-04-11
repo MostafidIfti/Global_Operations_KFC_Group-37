@@ -34,7 +34,7 @@
                <Tab id="generateShiftSummary" fx:id="generateShiftSummaryTab" disable="true"
                     text="Generate Shift Summary">
                    <content>
-                       <AnchorPane prefHeight="200.0" prefWidth="200.0"/>
+                       <fx:include source="generateShiftSummary.fxml"/>
                    </content>
                </Tab>
            </tabs>
