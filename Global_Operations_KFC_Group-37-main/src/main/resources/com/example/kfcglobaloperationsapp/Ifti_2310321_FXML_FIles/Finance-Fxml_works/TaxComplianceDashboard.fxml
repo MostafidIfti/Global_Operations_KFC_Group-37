@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kfcglobaloperationsapp.IFTI_2310321.Finance_Manager.TaxComplianceController">
+   <children>
+      <Label layoutX="300.0" layoutY="20.0" text="Tax Compliance Reporting">
+         <font><Font name="System Bold" size="18.0" /></font>
+      </Label>
+
+      <Button layoutX="20.0" layoutY="20.0" onAction="#returnToDashboardOnClick" text="&lt; Back" />
+
+      <Label layoutX="20.0" layoutY="70.0" text="Report Type:" />
+      <ComboBox fx:id="taxTypeCombo" layoutX="100.0" layoutY="66.0" prefWidth="150.0" />
+
+      <Label layoutX="270.0" layoutY="70.0" text="Fiscal Year:" />
+      <ComboBox fx:id="yearCombo" layoutX="340.0" layoutY="66.0" prefWidth="100.0" />
+
+      <Button layoutX="460.0" layoutY="66.0" onAction="#generateTaxReportOnClick" style="-fx-background-color: lightblue;" text="Generate Report Preview" />
+
+      <TableView fx:id="taxTableView" layoutX="20.0" layoutY="110.0" prefHeight="250.0" prefWidth="760.0">
+        <columns>
+          <TableColumn fx:id="categoryCol" prefWidth="250.0" text="Financial Category" />
+          <TableColumn fx:id="amountCol" prefWidth="170.0" text="Taxable Amount ($)" />
+          <TableColumn fx:id="rateCol" prefWidth="150.0" text="Tax Rate / Rule" />
+          <TableColumn fx:id="taxCol" prefWidth="180.0" text="Calculated Tax ($)" />
+        </columns>
+      </TableView>
+
+      <Label fx:id="totalTaxLabel" layoutX="20.0" layoutY="380.0" text="Total Tax Payable: $0.0">
+         <font><Font name="System Bold" size="15.0" /></font>
+      </Label>
+
+      <Label fx:id="filingStatusLabel" layoutX="20.0" layoutY="410.0" text="Filing Readiness: Pending Analysis" textFill="#008a1c">
+         <font><Font name="System Italic" size="14.0" /></font>
+      </Label>
+
+      <Button layoutX="20.0" layoutY="460.0" onAction="#exportAndNotifyOnClick" prefHeight="40.0" prefWidth="250.0" text="Finalize, Export &amp; Notify CFO" />
+
+      <Label fx:id="systemOutputLabel" alignment="CENTER" layoutX="20.0" layoutY="530.0" prefWidth="760.0" text="System Status: Ready" textFill="RED">
+         <font><Font name="System Bold" size="14.0" /></font>
+      </Label>
+   </children>
+</AnchorPane>

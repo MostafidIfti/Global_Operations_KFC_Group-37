@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="650.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kfcglobaloperationsapp.IFTI_2310321.Finance_Manager.ExpenseManagementController">
+   <children>
+      <Label layoutX="320.0" layoutY="14.0" text="Departmental Expense Review">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+
+      <Button layoutX="20.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnToDashboardButtonOnClick" text="&lt; Back to Dashboard" />
+
+      <Label layoutX="20.0" layoutY="60.0" text="Pending Expense Reports:" />
+
+      <TableView fx:id="expenseTableView" layoutX="20.0" layoutY="80.0" prefHeight="200.0" prefWidth="810.0">
+        <columns>
+          <TableColumn fx:id="idCol" prefWidth="100.0" text="Expense ID" />
+          <TableColumn fx:id="deptCol" prefWidth="180.0" text="Department" />
+          <TableColumn fx:id="categoryCol" prefWidth="180.0" text="Category" />
+          <TableColumn fx:id="amountCol" prefWidth="150.0" text="Amount ($)" />
+          <TableColumn fx:id="statusCol" prefWidth="200.0" text="Status" />
+        </columns>
+      </TableView>
+
+      <Button layoutX="20.0" layoutY="290.0" mnemonicParsing="false" onAction="#viewDetailsButtonOnClick" text="View Selected Expense Details" />
+
+      <Line endX="710.0" layoutX="120.0" layoutY="340.0" startX="-100.0" />
+
+      <Label layoutX="20.0" layoutY="360.0" text="Expense Details &amp; Documents:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+
+      <Label fx:id="detailsLabel" layoutX="20.0" layoutY="390.0" text="No expense selected..." textFill="#002fff" />
+      <Label fx:id="warningLabel" layoutX="20.0" layoutY="420.0" text="" textFill="#ff9100">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
+
+      <Label layoutX="20.0" layoutY="480.0" text="Manager Remarks (Required for Rejection):" />
+      <TextField fx:id="remarksTextField" layoutX="20.0" layoutY="500.0" prefHeight="25.0" prefWidth="400.0" promptText="Enter reasons or notes here..." />
+
+      <Button layoutX="450.0" layoutY="500.0" mnemonicParsing="false" onAction="#approveButtonOnClick" prefWidth="100.0" style="-fx-background-color: lightgreen;" text="Approve" />
+      <Button layoutX="570.0" layoutY="500.0" mnemonicParsing="false" onAction="#rejectButtonOnClick" prefWidth="100.0" style="-fx-background-color: #ffcccc;" text="Reject" />
+      <Button layoutX="690.0" layoutY="500.0" mnemonicParsing="false" onAction="#requestClarificationButtonOnClick" prefWidth="140.0" text="Request Clarification" />
+
+      <Label fx:id="systemOutputLabel" alignment="CENTER" layoutX="20.0" layoutY="580.0" prefWidth="810.0" text="System Status: Ready for Review" textFill="RED">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
